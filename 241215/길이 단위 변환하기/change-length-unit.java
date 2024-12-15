@@ -6,3 +6,5 @@ public class Main {
 
         // 출력
         System.out.printf("%.1fft = %.1fcm\n%.1fmi = %.1fcm", a, a*30.48, b, b*160934);
+    }
+}
