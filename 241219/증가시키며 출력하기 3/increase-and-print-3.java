@@ -1,0 +1,19 @@
+
+public class Main {
+	
+	
+	public static void main(String[]args) {
+//		Scanner sc = new Scanner(System.in);
+//		int n = sc.nextInt();
+//		int a = sc.nextInt();
+		int i=10;
+		while(i<=26) {
+			System.out.print(i+" ");
+			i+=2;
+		}
+		
+		
+	}
+}
+
+
