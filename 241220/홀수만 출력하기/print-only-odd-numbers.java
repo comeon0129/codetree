@@ -9,7 +9,7 @@ public class Main {
 		int n = sc.nextInt();
 		for(int i=0; i<n; i++) {
 			int temp = sc.nextInt();
-			if(temp % 3 ==0)
+			if(temp % 2 !=0 && temp % 3 ==0)
 				System.out.println(temp);
 		}
 		
@@ -17,3 +17,6 @@ public class Main {
 	}
 		
 }
+
+
+
