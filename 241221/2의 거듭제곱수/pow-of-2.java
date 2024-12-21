@@ -12,6 +12,7 @@ public class Main {
 			if(n / 2 != 1) {
 				n/=2;
 				cnt++;
+				continue;
 			}
 			cnt++;
 			break;
@@ -28,3 +29,5 @@ public class Main {
 	}
 		
 }
+
+
