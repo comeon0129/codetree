@@ -10,9 +10,9 @@ public class Main {
 		int b = sc.nextInt();	
 			
 		for(int i=1; i<=9; i++) {
-			for(int j=0; j<b/a; j++) {
-					System.out.print(b-2*j+" * "+ i +" = "+(b-2*j)*i);
-					if(j<b/a-1)
+			for(int j=b; j>=a; j-=2) {
+					System.out.print(j+" * "+ i +" = "+j*i);
+					if(j>a)
 						System.out.print(" / ");
 			}
 			System.out.println();
@@ -22,3 +22,6 @@ public class Main {
 	}
 		
 }
+
+
+
