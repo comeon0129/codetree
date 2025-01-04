@@ -15,9 +15,11 @@ public class Main {
 			sum+=n;
 			cnt++;
 		}
-		System.out.println(sum+" "+(double)sum/cnt);
+		System.out.print(sum+" ");
+		System.out.printf("%.1f",(double)sum/cnt);
 		sc.close();
 	}
 		
 }
+
 
