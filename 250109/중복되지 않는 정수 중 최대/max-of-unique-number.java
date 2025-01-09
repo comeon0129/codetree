@@ -11,29 +11,35 @@ public class Main {
     		arr[i] = sc.nextInt();
 		}
     	Arrays.sort(arr);
-    	for(int i=0; i<n; i++) {
-    		if(i== 0) {
-    			if(arr[i] != arr[i+1]) {
-    				max = arr[i];
-    			}
-    		}
-    		else if(i == n-1) {
-    			if(arr[i] != arr[i-1]) {
-    				max = arr[i];
-    			}
-    		}
-    		else {
-    			if(arr[i] != arr[i-1] && arr[i] !=arr[i+1] ) {
-        			max = arr[i];
+    	if(n==1) {
+    		System.out.println(arr[0]);
+    	}
+    	else {
+    		for(int i=0; i<n; i++) {
+        		if(i== 0) {
+        			if(arr[i] != arr[i+1]) {
+        				max = arr[i];
+        			}
         		}
-    		}
+        		else if(i == n-1) {
+        			if(arr[i] != arr[i-1]) {
+        				max = arr[i];
+        			}
+        		}
+        		else {
+        			if(arr[i] != arr[i-1] && arr[i] !=arr[i+1] ) {
+            			max = arr[i];
+            		}
+        		}
+        	}
+        	
+        	if(max == -1) {
+        		System.out.println(-1);
+        	}
+        	else
+        		System.out.println(max);
     	}
     	
-    	if(max == -1) {
-    		System.out.println(-1);
-    	}
-    	else
-    		System.out.println(max);
     		
     		
         sc.close();
