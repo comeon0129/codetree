@@ -16,6 +16,7 @@ public class Main {
     		b[i] = sc.nextInt();
     	}
     	for(int i=0; i<n1; i++) {
+    		cnt =0;
     		if(a[i] == b[0]) {
     			for(int j=1; j<n2; j++) {
     				if(i+j >= n1)
