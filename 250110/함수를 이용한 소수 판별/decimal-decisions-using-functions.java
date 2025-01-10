@@ -20,6 +20,9 @@ public class Main {
     	int b = sc.nextInt();
     	int sum =0;
     	for(int i=a; i<=b; i++) {
+    		if(i==1) {
+    			continue;
+    		}
     		if(isPrime(i)) {
     			sum+=i;
     		}
