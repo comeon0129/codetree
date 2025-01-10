@@ -3,16 +3,16 @@ import java.util.Scanner;
 public class Main {
 	
 	public static void plus(int a, int b) {
-		System.out.println(a+" + "+b+" = "+a+b);
+		System.out.println(a+" + "+b+" = "+(a+b));
 	}
 	public static void minus(int a, int b) {
 		System.out.println(a+" - "+b+" = "+(a-b));
 	}
 	public static void mult(int a, int b) {
-		System.out.println(a+" * "+b+" = "+a*b);
+		System.out.println(a+" * "+b+" = "+(a*b));
 	}
 	public static void divide(int a, int b) {
-		System.out.println(a+" / "+b+" = "+a/b);
+		System.out.println(a+" / "+b+" = "+(a/b));
 	}
 	
     public static void main(String[] args) {
