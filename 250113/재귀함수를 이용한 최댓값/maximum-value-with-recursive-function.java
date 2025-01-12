@@ -7,11 +7,12 @@ public class Main {
 		if(n==1){
 			return arr[0];
 		}
+		int previousMax = calc(arr,n-1);
 		if(arr[n-1] > calc(arr,n-1)) {
 			return arr[n-1];
 		}
 		else
-			return calc(arr,n-1);
+			return previousMax;
 	}
 	
 	public static void main(String[] args) {
