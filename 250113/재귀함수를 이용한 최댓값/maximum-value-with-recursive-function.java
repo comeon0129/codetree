@@ -8,7 +8,7 @@ public class Main {
 			return arr[0];
 		}
 		int previousMax = calc(arr,n-1);
-		if(arr[n-1] > calc(arr,n-1)) {
+		if(arr[n-1] > previousMax) {
 			return arr[n-1];
 		}
 		else
