@@ -7,7 +7,7 @@ public class Main {
 	public static int[] line = new int[MAX_N+1];
 	
 	public static boolean test(int[] line) {
-		for(int i=0; i<line.length; i++) {
+		for(int i=1; i<line.length; i++) {
 			if(line[i] == n) {
 				return true;
 			}
@@ -17,7 +17,7 @@ public class Main {
 	
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-		int n = sc.nextInt();
+		n = sc.nextInt();
 		for(int i=0; i<n; i++) {
 			int x1 =sc.nextInt();
 			int x2 =sc.nextInt();
@@ -25,7 +25,7 @@ public class Main {
 				line[j] ++;
 			}
 		}
-
+		
 		if(test(line)) {
 			System.out.println("Yes");
 		}
