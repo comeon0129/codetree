@@ -25,8 +25,8 @@ public class Main {
 		}
 		
 		int cnt =0;
-		for(int i=1; i<201; i++) {
-			for(int j=1; j<201; j++) {
+		for(int i=0; i<201; i++) {
+			for(int j=0; j<201; j++) {
 				if(rectangle[i][j] == 1) {
 					cnt++;
 				}
