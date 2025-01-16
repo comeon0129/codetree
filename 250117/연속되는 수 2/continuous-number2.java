@@ -28,6 +28,9 @@ public class Main {
 				}
 				curCnt++;
 			}
+			if(curCnt != 1) {
+				ans = Math.max(ans, curCnt);
+			}
 			System.out.println(ans);
 		}
 		
