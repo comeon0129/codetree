@@ -7,7 +7,7 @@ public class Main {
     
     public static boolean test(int[] a, int[] b) {
     	int cnt = 0;
-    	for(int i=0; i<a.length; i++) {
+    	for(int i=0; i<a.length-b.length; i++) {
     		if(a[i] == b[0]) {
     			for(int j=0; j<b.length; j++) {
     				if(a[i+j] == b[j]) {
