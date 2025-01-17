@@ -6,18 +6,18 @@ public class Main {
     public static int n1, n2;
     
     public static boolean test(int[] a, int[] b) {
-    	int cnt = 0;
-    	for(int i=0; i<a.length-b.length; i++) {
+    	for(int i=0; i<a.length-b.length+1; i++) {
+    		int cnt = 0;
     		if(a[i] == b[0]) {
     			for(int j=0; j<b.length; j++) {
     				if(a[i+j] == b[j]) {
     					cnt++;
-    				}   				
+    				}
     			}
     			if(cnt == b.length) {
     				return true;
     			}
-    		}
+    		}  		
     	}
     	return false;
     }
