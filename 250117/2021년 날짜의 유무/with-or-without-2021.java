@@ -6,6 +6,9 @@ public class Main {
     public static int m, d;
     
     public static boolean isExist(int m, int d) {
+    	if(m>=13) {
+    		return false;
+    	}
     	int day = days[m-1];
     	for(int i=1; i<=day; i++) {
     		if(d == i) {
