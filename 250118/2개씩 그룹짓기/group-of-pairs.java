@@ -18,7 +18,7 @@ public class Main {
 		Arrays.sort(arr);
 		int max = INT_MIN;
 		
-		for(int i=0; i<2*n; i++) {
+		for(int i=0; i<n; i++) {
 			if(arr[i]+ arr[2*n-i-1] > max) {
 				max = arr[i] + arr[2*n-i-1];
 			}
