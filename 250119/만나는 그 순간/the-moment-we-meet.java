@@ -14,9 +14,11 @@ public class Main {
 		int m = sc.nextInt();
 		int a_idx = 1;
 		int b_idx = 1;
+		int t_sum = 0;
 		for(int i=0; i<n; i++) {
 			char c = sc.next().charAt(0);
 			int dist = sc.nextInt();
+			t_sum += dist;
 			for(int j=0; j<dist; j++) {
 				if(c == 'R') {
 					a[a_idx] = a[a_idx-1]+1;
@@ -43,12 +45,16 @@ public class Main {
 				}
 			}
 		}
-		
-		for(int i=1; i<=MAX_N; i++) {
+		boolean flag = true;
+		for(int i=1; i<=t_sum; i++) {
 			if(a[i] == b[i]) {
 				System.out.println(i);
+				flag = false;
 				break;
 			}
+		}
+		if(flag) {
+			System.out.println(-1);
 		}
 		
 		sc.close();
