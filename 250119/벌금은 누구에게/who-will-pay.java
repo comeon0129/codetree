@@ -9,7 +9,7 @@ public class Main {
 		int m = sc.nextInt();
 		int k = sc.nextInt();
 		int[] count = new int[n+1];
-		int ans = 0;
+		int ans = -1;
 		for(int i=1; i<=n; i++) {
 			count[i] = k;
 		}
