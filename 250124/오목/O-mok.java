@@ -86,7 +86,10 @@ public class Main {
 			}
 		}
 		System.out.println(ans);
-		System.out.println(x_pos+" "+y_pos);
+		if(ans !=0) {
+			System.out.println(x_pos+" "+y_pos);
+		}
+		
 		sc.close();
     }
 }
