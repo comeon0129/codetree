@@ -16,11 +16,20 @@ public class Main {
 			basket[pos] += candy;
 		}
 		int max = Integer.MIN_VALUE;
-		for(int i=0; i<=100-2*k; i++) {
-			int c = k+i;
-			int candy_sum = 0;
-			for(int j =c-k; j<=c+k; j++) {
-				candy_sum += basket[j];
+		if(k<=50) {
+			for(int i=0; i<=100-2*k; i++) {
+				int c = k+i;
+				int candy_sum = 0;
+				for(int j =c-k; j<=c+k; j++) {
+					candy_sum += basket[j];
+				}
+				max = Math.max(max, candy_sum);
+			}
+		}
+		else {
+			int candy_sum =0;
+			for(int i=0; i<=100; i++) {
+				candy_sum+=basket[i];
 			}
 			max = Math.max(max, candy_sum);
 		}
