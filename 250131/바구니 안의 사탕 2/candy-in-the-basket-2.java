@@ -13,7 +13,7 @@ public class Main {
 		for (int i = 0; i < n; i++) {
 			int candy = sc.nextInt();
 			int pos = sc.nextInt();
-			basket[pos] = candy;
+			basket[pos] += candy;
 		}
 		int max = Integer.MIN_VALUE;
 		for(int i=0; i<=100-2*k; i++) {
@@ -21,6 +21,9 @@ public class Main {
 			int candy_sum = 0;
 			for(int j =c-k; j<=c+k; j++) {
 				candy_sum += basket[j];
+			}
+			if (candy_sum > max) {
+				System.out.println(candy_sum);
 			}
 			max = Math.max(max, candy_sum);
 		}
