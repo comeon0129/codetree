@@ -22,9 +22,6 @@ public class Main {
 			for(int j =c-k; j<=c+k; j++) {
 				candy_sum += basket[j];
 			}
-			if (candy_sum > max) {
-				System.out.println(candy_sum);
-			}
 			max = Math.max(max, candy_sum);
 		}
 		System.out.println(max);
