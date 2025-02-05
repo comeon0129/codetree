@@ -46,7 +46,7 @@ public class Main {
 			int ny = c+ dy[dirNum];
 			if(!inRange(nx,ny)) {
 				dirNum = 3- dirNum;
-				i++;
+				continue;
 			}
 			r= r+dx[dirNum];
 			c= c+dy[dirNum];
