@@ -38,7 +38,7 @@ public class Main {
 				x = x + dx[dirNum];
 				y = y + dy[dirNum];
 				time++;
-				if(x == 0 && y == 0) {
+				if(x == 0 && y == 0 && ans == -1) {
 					ans = time;
 				}
 			}
