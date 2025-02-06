@@ -18,7 +18,7 @@ public class Main {
 			for(int j=0; j<n-2; j++) {
 				for(int k=0; k<n; k++) {
 					for(int l=0; l<n-2; l++) {
-						if(i == k && l <= i+2) { // 두 격자가 같은 행에 있는데 겹치는 경우
+						if(i == k && l <= j+2) { // 두 격자가 같은 행에 있는데 겹치는 경우
 							continue;
 						}
 						ans = Math.max(ans, board[i][j]+board[i][j+1]+board[i][j+2]+board[k][l]+board[k][l+1]+board[k][l+2]);
