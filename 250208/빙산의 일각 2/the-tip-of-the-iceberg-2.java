@@ -25,7 +25,6 @@ public class Main {
 			if(arr[n-1]-i >0) {
 				cnt++;
 			}
-			System.out.println(cnt);
 			maxCnt = Math.max(maxCnt, cnt);
 		}
 		System.out.println(maxCnt);
