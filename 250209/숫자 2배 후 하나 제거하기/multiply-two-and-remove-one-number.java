@@ -30,7 +30,7 @@ public class Main {
 			}
 			arr[i] /= 2;
 		}
-		System.out.println();
+		System.out.println(minDiff);
 		
 		sc.close();
     }
