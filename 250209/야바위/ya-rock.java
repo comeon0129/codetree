@@ -18,7 +18,6 @@ public class Main {
 		}
 		
 		int maxScore = 0;
-		int ans = 0;
 		for(int i=1; i<=3; i++) {
 			cups[i] = 1;
 			int score = 0;
@@ -30,15 +29,12 @@ public class Main {
 					score ++;
 				}
 			}
-			if(score > maxScore) {
-				ans = i;
-				maxScore = score;
-			}  // 가장 최고점수일때의 컵 위치 기록
+			maxScore = Math.max(maxScore, score);
 			for(int j=1; j<=3; j++) {
 				cups[j] = 0;
 			} //cup 배열 다시 초기화
 		}
-		System.out.println(ans);
+		System.out.println(maxScore);
 		
 		sc.close();
     }
