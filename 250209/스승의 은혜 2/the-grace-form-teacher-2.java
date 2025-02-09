@@ -26,7 +26,7 @@ public class Main {
 			p[i] /=2;
 			for(int j=0; j<n; j++) {
 				curB -= p[j];
-				if(curB <= 0) {
+				if(curB < 0) {
 					break;
 				}
 				cnt++;
