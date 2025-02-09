@@ -14,7 +14,7 @@ public class Main {
 		for(int i=0; i<n; i++) {
 			bomb[i] = sc.nextInt();
 		}
-		int maxNum= 0;
+		int maxNum= -1;
 		for(int i=0; i<n; i++) {
 			for(int j=0; j<n; j++) {
 				if(i == j)
