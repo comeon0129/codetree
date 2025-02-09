@@ -29,7 +29,7 @@ public class Main {
 						
 					}
 					for(int l=0; l<counting.length; l++) { //2개 이상 겹치는 선분이 있는지 확인
-						System.out.println(counting[l]);
+						
 						if(counting[l] >=2) {
 							intersect = true;
 							break;
