@@ -12,6 +12,7 @@ public class Main {
 			if(arr[i] <= maxVal)
 				availableStones[cnt++] = i;
 		}
+	
 		for(int i=1; i< cnt; i++) {
 			int dist = availableStones[i] - availableStones[i-1];
 			if(dist > k)
@@ -27,7 +28,7 @@ public class Main {
 		for(int i=0; i<n; i++) {
 			arr[i] = sc.nextInt();
 		}
-		int minMax = n;
+		int minMax = 100;
 		for(int i=100; i>=Math.max(arr[0], arr[n-1]); i--) {
 			if(isPossible(i)) {
 				minMax = Math.min(minMax, i);
