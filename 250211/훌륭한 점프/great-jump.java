@@ -28,7 +28,7 @@ public class Main {
 			arr[i] = sc.nextInt();
 		}
 		int minMax = n;
-		for(int i=n; i>=Math.max(arr[0], arr[n-1]); i--) {
+		for(int i=100; i>=Math.max(arr[0], arr[n-1]); i--) {
 			if(isPossible(i)) {
 				minMax = Math.min(minMax, i);
 			}
