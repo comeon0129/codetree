@@ -36,7 +36,7 @@ public class Main {
 		int ans = 0;
 		for(int i=0; i<cnt.length; i++) {
 			int temp = cnt[i];
-			if(temp>=maxCnt) {
+			if(temp>=maxCnt && temp != 0) {
 				maxCnt = temp;
 				ans = i;
 			}
