@@ -32,8 +32,8 @@ public class Main {
 				leader = 2;
 				cnt++;
 			}
-			else if(a_score[i] == b_score[i] && leader !=3) {
-				leader = 3;
+			else if(a_score[i] == b_score[i] && leader !=0) {
+				leader = 0;
 				cnt++;
 			}
 			else if(a_score[i] > b_score[i] && leader != 1) {
@@ -46,4 +46,3 @@ public class Main {
 		sc.close();
     }
 }
-
