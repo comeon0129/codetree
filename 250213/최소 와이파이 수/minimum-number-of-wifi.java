@@ -18,7 +18,11 @@ public class Main {
 		for(int i=0; i<n; i++) {
 			if(village[i] == 1) {
 				ans++;
-				for(int j=i; j<=i+2*m; j++) {
+				int lastIdx = i+2*m;
+				if(lastIdx >=n) {
+					lastIdx =  n-1;
+				}
+				for(int j=i; j<=lastIdx; j++) {
 					village[j] = 0;
 				}
 			}
