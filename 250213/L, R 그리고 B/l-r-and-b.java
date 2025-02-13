@@ -36,8 +36,12 @@ public class Main {
 		}
 		int ans = Math.abs(l_row - b_row) + Math.abs(l_col - b_col) -1; //마지막 도착지점은 제외 
 		
-		if((l_row == r_row && r_row == b_row) || (l_col == r_col && r_col == b_col)) //일직선상에 있는 경우
+		if(l_row == r_row && r_row == b_row && ((l_col < r_col && r_col < b_col)||(b_col < r_col && r_col < l_col)) ) // 가로로 일직선상에 있는 경우
 			ans+=2;
+		
+		else if(l_col == r_col && r_col == b_col && ((l_row < r_row && r_row <b_row)||(b_row < r_row && r_row < l_row)) ){
+			ans+=2;
+		}
 		
 		System.out.println(ans);
 		sc.close();
