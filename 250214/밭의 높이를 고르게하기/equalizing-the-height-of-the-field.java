@@ -1,4 +1,3 @@
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
@@ -16,13 +15,17 @@ public class Main {
 			int height = sc.nextInt();
 			cost[i] = Math.abs(h - height);
 		}
-		Arrays.sort(cost,0,n);
-		
-		int ans = 0;
-		for(int i=0; i<t; i++) {
-			ans+=cost[i];
+		int minCost = Integer.MAX_VALUE;
+		for(int i=0; i<=n-t; i++) {
+			int curCost = 0;
+			for(int j=i; j<i+t; j++) {
+				curCost+=cost[j];
+			}
+			minCost = Math.min(minCost, curCost);
 		}
-		System.out.println(ans);
+		
+		
+		System.out.println(minCost);
 		
 		sc.close();
     }
