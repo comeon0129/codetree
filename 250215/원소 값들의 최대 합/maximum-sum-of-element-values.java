@@ -21,6 +21,9 @@ public class Main {
 			int sum = 0;
 			for(int j=0; j<m; j++) {
 				int temp = tempArr[tempArr[i]];
+				if(temp == tempArr[i]) {
+					break;
+				}
 				tempArr[tempArr[i]] = tempArr[i];
 				tempArr[i] = temp;
 				sum+= tempArr[i];
