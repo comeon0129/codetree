@@ -17,15 +17,13 @@ public class Main {
 		
 		int ans = 0;
 		for(int i=1; i<=n; i++) {
-			int[] tempArr = arr.clone();
 			int sum = 0;
+			int idx = i;
 			for(int j=0; j<m; j++) {
-				sum += tempArr[i];
-				int temp = tempArr[tempArr[i]];
-				tempArr[tempArr[i]] = tempArr[i];
-				tempArr[i] = temp;
+				sum+= arr[idx];
+				idx = arr[idx];
 			}
-			ans = Math.max(ans, sum);
+			ans = Math.max(ans,sum);
 		}
 		
 		System.out.println(ans);
