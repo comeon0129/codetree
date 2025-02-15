@@ -22,7 +22,7 @@ public class Main {
 			for(int j=0; j<m; j++) {
 				int temp = tempArr[tempArr[i]];
 				if(temp == tempArr[i]) {
-					break;
+					continue;
 				}
 				tempArr[tempArr[i]] = tempArr[i];
 				tempArr[i] = temp;
