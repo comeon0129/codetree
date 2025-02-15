@@ -20,13 +20,10 @@ public class Main {
 			int[] tempArr = arr.clone();
 			int sum = 0;
 			for(int j=0; j<m; j++) {
+				sum += tempArr[i];
 				int temp = tempArr[tempArr[i]];
-				if(temp == tempArr[i]) {
-					continue;
-				}
 				tempArr[tempArr[i]] = tempArr[i];
 				tempArr[i] = temp;
-				sum+= tempArr[i];
 			}
 			ans = Math.max(ans, sum);
 		}
