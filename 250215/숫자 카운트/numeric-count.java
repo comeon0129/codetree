@@ -18,38 +18,43 @@ public class Main {
 			count2[i] = sc.nextInt();
 		}
 		int cnt =0;
-		for(int i=100; i<1000; i++) {
-			boolean flag =true;
-			int[] temp1 = new int[n];
-			int[] temp2 = new int[n];
-			int[] numA = new int[3];
-			numA[0] = i / 100;
-			numA[1] = (i % 100) / 10;
-			numA[2] = (i % 100) % 10;
-			for(int j=0; j<n; j++) {
-				int[] numB = new int[3];
-				numB[0] = numbers[j] / 100;
-				numB[1] = (numbers[j] % 100) / 10;
-				numB[2] = (numbers[j] % 100) % 10;
-				for(int k=0; k<3; k++) {
-					for(int l=0; l<3; l++) {
-						if(numA[k] == numB[l] && k == l) {
-							temp1[j]++;
-						}
-						else if(numA[k] == numB[l]) {
-							temp2[j]++;
+		for(int i=1; i<=9; i++) {
+			for(int j=1; j<=9; j++) {
+				for(int k=1; k<=9; k++) {
+					if(i==j || j==k || i==k)
+						continue;
+					boolean flag =true;
+					int[] temp1 = new int[n];
+					int[] temp2 = new int[n];
+					for(int l=0; l<n; l++) {
+						int firstB = numbers[l] / 100;
+						int secondB = (numbers[l] % 100) / 10;
+						int thirdB = (numbers[l] % 100) % 10;
+							
+						if(firstB == i)
+							temp1[l]++;
+						if(secondB == j)
+							temp1[l]++;
+						if(thirdB == k)
+							temp1[l]++;
+						if(firstB == j ||  firstB == k)
+							temp2[l]++;
+						if(secondB == i ||  secondB == k)
+							temp2[l]++;
+						if(thirdB == i || thirdB == j)
+							temp2[l]++;
+					}
+					
+					for(int l=0; l<n; l++) {
+						if(temp1[l] != count1[l] || temp2[l] !=count2[l]) {
+							flag = false;
+							break;
 						}
 					}
+					if(flag)
+						cnt++;
 				}
 			}
-			for(int j=0; j<n; j++) {
-				if(temp1[j] != count1[j] || temp2[j] !=count2[j]) {
-					flag = false;
-					break;
-				}
-			}
-			if(flag)
-				cnt++;
 		}
 		System.out.println(cnt);
 		
