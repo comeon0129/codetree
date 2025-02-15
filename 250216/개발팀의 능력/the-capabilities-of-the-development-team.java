@@ -11,6 +11,7 @@ public class Main {
 			total+= developers[i];
 		}
 		int ans = Integer.MAX_VALUE;
+		boolean isExist = false;
 		for(int i=0; i<5; i++) {
 			for(int j=i+1; j<5; j++) {
 				for(int k= 0; k<5; k++) {
@@ -23,11 +24,15 @@ public class Main {
 						continue;
 					int minTeam = Math.min(team1, Math.min(team2, team3));
 					int maxTeam = Math.max(team1, Math.max(team2, team3));
+					isExist = true;
 					ans = Math.min(ans, maxTeam-minTeam);
 				}
 			}
 		}
-		System.out.println(ans);
+		if(isExist)
+			System.out.println(ans);
+		else
+			System.out.println(-1);
 		
 		sc.close();
     }
