@@ -29,7 +29,7 @@ public class Main {
 				doorCnt++;
 				curSum = numbers[j];
 			}
-			if(doorCnt == m-1) {
+			if(doorCnt <= m-1) {
 				ans = i;
 				break;
 			}
