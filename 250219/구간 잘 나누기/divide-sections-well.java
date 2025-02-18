@@ -10,26 +10,28 @@ public class Main {
 		n = sc.nextInt();
 		m = sc.nextInt();
 		
-		int total =0;
 		for(int i=0; i<n; i++) {
 			numbers[i] = sc.nextInt();
-			total += numbers[i];
 		}
 		
-		int ans = Integer.MAX_VALUE;
-		for(int i=0; i<n-2; i++) {
-			for(int j=i+1; j<n-1; j++) {
-				int sum1 = 0;
-				int sum2 = 0;
-				for(int k=0; k<=i; k++) {
-					sum1+=numbers[k];
-				}
-				for(int k=i+1; k<=j; k++) {
-					sum2+= numbers[k];
-				}
-				int sum3 = total-(sum1+sum2);
-				int maxSum = Math.max(sum1, Math.max(sum2, sum3));
-				ans = Math.min(ans, maxSum);
+		int maxNum = 0;
+		for(int i=0; i<n; i++) {
+			maxNum = Math.max(maxNum, numbers[i]);
+		}
+		int ans = 0;
+		for(int i=maxNum; i<=10000; i++) {
+			int curSum = 0;
+			int doorCnt = 0;
+			for(int j=0; j<n; j++) {
+				curSum += numbers[j];
+				if(curSum <= i)
+					continue;
+				doorCnt++;
+				curSum = numbers[j];
+			}
+			if(doorCnt == m-1) {
+				ans = i;
+				break;
 			}
 		}
 		System.out.println(ans);
