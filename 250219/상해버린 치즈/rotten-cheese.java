@@ -16,7 +16,7 @@ class Chart{
 public class Main {
 	
 	public static int N,M,D,S;
-	public static int[] prescribe = new int[51];
+	public static int[] prescribe = new int[51];  //N명을 기준으로 함
 	public static int[] badCheese = new int[51];  // M개를 기준으로 함
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
@@ -54,14 +54,7 @@ public class Main {
 				}
 			}
 		}
-		
-		for(int i=1; i<=N; i++) {
-			System.out.print(prescribe[i]+" ");
-		}
-		System.out.println();
-		
 		int cnt = 0;
-
 		for(int i=1; i<=N; i++) {
 			if(prescribe[i] == 1)
 				cnt++;
