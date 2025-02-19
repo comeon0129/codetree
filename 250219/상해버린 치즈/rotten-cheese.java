@@ -55,8 +55,13 @@ public class Main {
 			}
 		}
 		
-		int cnt = 0;
+		for(int i=1; i<=N; i++) {
+			System.out.print(prescribe[i]+" ");
+		}
+		System.out.println();
 		
+		int cnt = 0;
+
 		for(int i=1; i<=N; i++) {
 			if(prescribe[i] == 1)
 				cnt++;
