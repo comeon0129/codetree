@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Scanner;
 
 class Chart{
@@ -12,12 +13,20 @@ class Chart{
 	}
 }
 
+class SickChart{
+	int personNum;
+	int time;
+	
+	public SickChart(int personNum, int time) {
+		this.personNum = personNum;
+		this.time = time;
+	}
+}
+
 
 public class Main {
 	
 	public static int N,M,D,S;
-	public static int[] prescribe = new int[51];  //N명을 기준으로 함
-	public static int[] badCheese = new int[51];  // M개를 기준으로 함
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		N = sc.nextInt(); // 사람 수
@@ -34,35 +43,45 @@ public class Main {
 			eatCharts[i] = new Chart(p, m, t);
 		}
 		
+		Arrays.sort(eatCharts,(a,b) -> a.time - b.time);
+		
+		SickChart[] sickCharts = new SickChart[S];
 		
 		for(int i=0; i<S; i++) {
 			int p = sc.nextInt();
 			int t = sc.nextInt();
-			
-			for(int j=0; j<D; j++) {
-				if(eatCharts[j].personNum == p && eatCharts[j].time < t) {
-					badCheese[eatCharts[j].cheeseNum]++;
-				}
-			}
+			sickCharts[i] = new SickChart(p,t);
 		}
 		
-	
+		int maxCnt = 0;
 		for(int i=1; i<=M; i++) {
-			if(badCheese[i] >= S) {
-				for(int j=0; j<D; j++) {
-					if(eatCharts[j].cheeseNum == i)
-						prescribe[eatCharts[j].personNum] = 1;
+			boolean isPossible = true;
+			int[] sickTime = new int[N+1];
+			int[] isUsed = new int[N+1];
+			for(int j=0; j<D; j++) {
+				if(eatCharts[j].cheeseNum == i && isUsed[eatCharts[j].personNum] == 0) {
+					sickTime[eatCharts[j].personNum] = eatCharts[j].time+1;
+					isUsed[eatCharts[j].personNum] = 1;
 				}
 			}
+			
+			for(int j=0; j<S; j++) {
+				if(sickTime[sickCharts[j].personNum] == 0 || sickTime[sickCharts[j].personNum] > sickCharts[j].time) {
+					isPossible = false;
+					break;
+				}
+			}
+			int cnt = 0;
+			if(isPossible) {
+				for(int j=1; j<=N; j++) {
+					if(sickTime[j] > 0)
+						cnt++;
+				}
+				maxCnt = Math.max(maxCnt, cnt);
+			}
 		}
-		int cnt = 0;
 		
-		for(int i=1; i<=N; i++) {
-			if(prescribe[i] == 1)
-				cnt++;
-		}
-		System.out.println(cnt);
-		
+		System.out.println(maxCnt);
 		sc.close();
     }
 }
