@@ -46,8 +46,9 @@ public class Main {
 			}
 		}
 		
+	
 		for(int i=1; i<=M; i++) {
-			if(badCheese[i] == S) {
+			if(badCheese[i] >= S) {
 				for(int j=0; j<D; j++) {
 					if(eatCharts[j].cheeseNum == i)
 						prescribe[eatCharts[j].personNum] = 1;
@@ -55,6 +56,7 @@ public class Main {
 			}
 		}
 		int cnt = 0;
+		
 		for(int i=1; i<=N; i++) {
 			if(prescribe[i] == 1)
 				cnt++;
