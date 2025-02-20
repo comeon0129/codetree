@@ -40,15 +40,19 @@ public class Main {
 			}
 			while(target > arr[destIdx] && destIdx < n) { // 그 뒷자리 중에서 자기가 들어갈 자리로 이동
 				destIdx++;
-			}
-				
-			arr[destIdx+1] = arr[destIdx];
-			arr[destIdx] = target;
-			for(int i=0; i<n; i++) {
-				arr[i] = arr[i+1];
+				System.out.println(destIdx);
 			}
 			
+			for(int i=n; i>destIdx; i--) //뒤에꺼 한칸씩 미루기
+				arr[i] = arr[i-1];
+			arr[destIdx] = target; // target끼워넣기
+			
+			for(int i=0; i<n; i++) {  //전체적으로 한칸씩 다 땡기고
+				arr[i] = arr[i+1];
+			}
+			arr[n] = 0; //마지막 자리 0으로 변경
 			cnt++;
+		
 		}
 		
 		System.out.println(cnt);
