@@ -14,9 +14,12 @@ public class Main {
 			else
 				odd++;
 		}
+	
 		int cnt = 0;
 		int turn = 2; // 2면 짝수 턴 , 1이면 홀수 턴
 		while(n>0) {
+			if(odd ==0 && even == 0)
+				break;
 			if(turn == 2) {
 				if(even > 0) {
 					even--;
