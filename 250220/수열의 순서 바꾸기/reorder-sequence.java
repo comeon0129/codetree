@@ -40,7 +40,6 @@ public class Main {
 			}
 			while(target > arr[destIdx] && destIdx < n) { // 그 뒷자리 중에서 자기가 들어갈 자리로 이동
 				destIdx++;
-				System.out.println(destIdx);
 			}
 			
 			for(int i=n; i>destIdx; i--) //뒤에꺼 한칸씩 미루기
