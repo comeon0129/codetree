@@ -17,6 +17,11 @@ public class Main {
 			c[i] = sc.next().charAt(0); //문자 보낸 사람
 			u[i] = sc.nextInt(); // 최종적으로 받지 않은 인원 수
 		}
+		if(u[p] == 0) {
+			System.out.println("");
+			System.exit(0);
+		}
+		
 		for(int i=p; i<=m; i++) {  // p번째 포함 그 이후에 나온 사람들은 메시지를 확실하게 읽은 사람임.
 			readUser[c[i]-'A'] = 1;
 		}
