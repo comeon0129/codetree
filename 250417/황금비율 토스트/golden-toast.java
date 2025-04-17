@@ -22,13 +22,11 @@ public class Main {
 			if(c=='L') {
 				if(it.hasPrevious()) {
 					it.previous();
-					System.out.println(it.nextIndex());
 				}
 			}
 			else if(c=='R') {
 				if(it.hasNext()) {
 					it.next();
-					System.out.println(it.nextIndex());
 				}
 			}
 			else if(c=='D') {
@@ -40,7 +38,6 @@ public class Main {
 			else if(c=='P') {
 				String s = sc.next();
 				it.add(s);
-				System.out.println(it.nextIndex());
 			}
 		}
 		for(int i=0; i<l.size(); i++) {
@@ -50,3 +47,4 @@ public class Main {
 		sc.close();
     }
 }
+
