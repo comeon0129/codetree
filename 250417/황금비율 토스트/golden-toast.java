@@ -1,8 +1,4 @@
-public class Main {
-    public static void main(String[] args) {
-        // Please write your code here.
-    }
-}import java.util.Scanner;
+import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.ListIterator;
