@@ -61,13 +61,19 @@ public class Main {
 	        	endOfArray = tempIdx;
 	        	
 	        	
-	        	if(!isBomb)
+	        	if(!isBomb || endOfArray == 0)
 	        		break;
 	 
 	        }
 	       
 	      
-	        System.out.println(bombs.length);
+	        int bombCnt =0;
+	        for(int i=0; i<endOfArray; i++) {
+	        	if(bombs[i] !=0)
+	        		bombCnt++;
+	        }
+	        
+	        System.out.println(bombCnt);
 	        for(int i=0; i<endOfArray; i++) {
 	        	System.out.println(bombs[i]);
 	        }
