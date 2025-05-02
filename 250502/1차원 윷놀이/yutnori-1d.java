@@ -1,63 +1,58 @@
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
-	
-	public static int n,m,k; // n: 턴의 개수 m: 윷놀이 판 길이 k: 말의 수
-	
-	public static int maxScore = 0;
-	
-	public static ArrayList<Integer> nums = new ArrayList<>();
-	
-	public static ArrayList<Integer> seq = new ArrayList<>();
+    public static final int MAX_K = 4;
+    public static final int MAX_N = 12;
+    
+    public static int n, m, k;
+    public static int[] nums = new int[MAX_N];
+    public static int[] pieces = new int[MAX_K];
+    
+    public static int ans;
+    
+    // 점수를 계산합니다.
+    public static int calc() {
+        int score = 0;
+        for(int i = 0; i < k; i++)
+            score += (pieces[i] >= m ? 1 : 0);
+        
+        return score;
+    }
+    
+    public static void findMax(int cnt) {
+        // 말을 직접 n번 움직이지 않아도
+        // 최대가 될 수 있으므로 항상 답을 갱신합니다.
+        ans = Math.max(ans, calc());
+        
+        // 더 이상 움직일 수 없으면 종료합니다.
+        if(cnt == n) 
+            return;
+        
+        for(int i = 0; i < k; i++) {
+            // 움직여서 더 이득이 되지 않는
+            // 말은 더 이상 움직이지 않습니다.
+            if(pieces[i] >= m)
+                continue;
+            
+            pieces[i] += nums[cnt];
+            findMax(cnt + 1);
+            pieces[i] -= nums[cnt];
+        }
+    }
 
-	public static int calcScore(int[] scoreBoard) {
-		int score = 0;
-		for(int i=1; i<=k; i++) {
-			if(scoreBoard[i]>=m-1)
-				score++;
-		}
-		return score;
-	}
-	
-	public static void move() {
-		int[] scoreBoard = new int[k+1];
-		for(int i=0; i<seq.size(); i++) {
-			int number = seq.get(i);
-			scoreBoard[number]+=nums.get(i);
-		}
-		maxScore = Math.max(maxScore, calcScore(scoreBoard));
-		
-	}
-	
-	public static void choose(int curNum) {
-		if(curNum == n) {
-			move();
-			return;
-		}
-		
-		for(int i=1; i<=k; i++) {
-			seq.add(i);
-			choose(curNum+1);
-			seq.remove(seq.size()-1);
-		}
-		return;
-	}
-	
-	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);
-		n = sc.nextInt();
-		m = sc.nextInt();
-		k = sc.nextInt();
-		
-		
-		for(int i=0; i<n; i++) {
-			nums.add(sc.nextInt());
-		}
-		
-		choose(0);
-		
-		System.out.println(maxScore);
-		sc.close();
-	}
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        n = sc.nextInt();
+        m = sc.nextInt();
+        k = sc.nextInt();
+        for(int i = 0; i < n; i++)
+            nums[i] = sc.nextInt();
+        
+        for(int i = 0; i < k; i++)
+            pieces[i] = 1;
+        
+        findMax(0);
+        
+        System.out.print(ans);
+    }
 }
