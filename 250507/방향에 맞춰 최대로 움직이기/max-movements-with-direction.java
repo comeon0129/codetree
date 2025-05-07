@@ -42,7 +42,7 @@ public class Main {
 		int moveX = dx[numDir[x][y]-1];
 		int moveY = dy[numDir[x][y]-1];
 		
-		for(int i=1; i<n; i++) {
+		for(int i=0; i<n; i++) {
 			combination.add(num[x][y]);
 			findMax(x+moveX*i,y+moveY*i);
 			combination.remove(combination.size()-1);
