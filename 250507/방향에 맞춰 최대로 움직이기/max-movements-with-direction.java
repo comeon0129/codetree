@@ -1,10 +1,8 @@
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
 	public static int n;
 	
-	public static int r,c;
 	
 	public static int ans = 0;
 	
@@ -12,40 +10,31 @@ public class Main {
 	
 	public static int[][] numDir = new int[4][4];
 	
-	
-	public static ArrayList<Integer> combination = new ArrayList<>();
-	
 	public static int[] dx = {-1,-1,0,1,1,1,0,-1};
 	
 	public static int[] dy = {0,1,1,1,0,-1,-1,-1};
 	
 	
-	public static void calc() {
-		ans = Math.max(ans, combination.size());
-	}
-	
 	public static boolean inRange(int x, int y) {
 		return 0<=x && x<n && 0<=y && y<n;
 	}
 	
-	public static void findMax(int x, int y) {
-		calc();
+	public static boolean canGo(int x, int y, int prevNum) {
+		return inRange(x,y) && num[x][y] >prevNum;
+	}
+	
+	public static void findMax(int x, int y, int cnt) {
+		ans = Math.max(ans, cnt);
 		
-		if(!inRange(x,y)) {
-			return;
-		}
-		
-		if((combination.size() !=0 && num[x][y] <= combination.get(combination.size()-1)) || combination.contains(num[x][y])){
-			return;
-		}
-		
-		int moveX = dx[numDir[x][y]-1];
-		int moveY = dy[numDir[x][y]-1];
+		int d = numDir[x][y]-1;
 		
 		for(int i=0; i<n; i++) {
-			combination.add(num[x][y]);
-			findMax(x+moveX*i,y+moveY*i);
-			combination.remove(combination.size()-1);
+			int nx = x+dx[d]*i;
+			int ny = y+dy[d]*i;
+			
+			if(canGo(nx,ny,num[x][y])) {
+				findMax(nx,ny,cnt+1);
+			}
 		}
 			
 	}
@@ -72,12 +61,12 @@ public class Main {
         	}
         }
         
-        r= sc.nextInt();
-        c = sc.nextInt();
+        int r= sc.nextInt();
+        int c = sc.nextInt();
 
-        findMax(r-1,c-1);
+        findMax(r-1,c-1,0);
         
-        System.out.println(ans-1);
+        System.out.println(ans);
         sc.close();
     }
 }
