@@ -17,6 +17,8 @@ public class Main {
 		}
 		
 		for(int i=1; i<=arr[index]; i++) {
+			if(index+i >=n)
+				continue;
 			findMin(index+i,cnt+1);
 		}
 		
