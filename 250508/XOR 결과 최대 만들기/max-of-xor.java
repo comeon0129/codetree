@@ -12,7 +12,7 @@ public class Main {
 	public static void calc() {
 		int temp = 0;
 		for(int i=0; i<n; i++) {
-			if(visited[i] ==1) {
+			if(visited[i] == 1) {
 				temp = temp ^ arr[i];
 			}
 		}
@@ -26,13 +26,14 @@ public class Main {
 			return;
 		}
 		
-		if(curNum == n+1)
+		if(curNum == n)
 			return;
 		
 		visited[curNum] = 1;
 		choose(curNum+1,cnt+1);
-		
 		visited[curNum] = 0;
+		
+		
 		choose(curNum+1,cnt);
 		
 	}
