@@ -1,3 +1,4 @@
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -38,6 +39,12 @@ public class Main {
 			if(visited[i])
 				continue;
 			
+			if(answer.size()>0) {
+				int lastNum = answer.get(answer.size()-1);
+				if(lastNum != i-1 && lastNum !=i+1 && lastNum !=i+n-1 && lastNum !=i-(n-1))
+					continue;
+			}
+						
 			visited[i] = true;
 			answer.add(i);
 			
@@ -67,3 +74,4 @@ public class Main {
 		sc.close();
 	}
 }
+
