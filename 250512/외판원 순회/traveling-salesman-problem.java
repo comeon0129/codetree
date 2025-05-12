@@ -9,15 +9,17 @@ public class Main {
 	
 	public static int[][] cost = new int [10][10];
 	
-	public static ArrayList<Integer> answer = new ArrayList<>();
+	public static ArrayList<Integer> y_pos = new ArrayList<>();
+	public static ArrayList<Integer> x_pos = new ArrayList<>();
 	
 	public static int ans = Integer.MAX_VALUE;
+	
 	
 	public static void calcMinSum() {
 		int sum = 0;
 		
 		for(int i=0; i<n; i++) {
-			sum += cost[i][answer.get(i)];
+			sum += cost[x_pos.get(i)][y_pos.get(i)];
 		}
 		
 		ans = Math.min(ans, sum);
@@ -25,26 +27,41 @@ public class Main {
 		return;
 	}
 	
-	public static void findMin(int curIdx) {
-		if(curIdx == n) {
+	public static void findMin(int cnt, int curX) {
+		
+		if(cnt == n) {
 			calcMinSum();
 			return;
 		}
 		
-		for(int i=0; i<n; i++) {
-			if(visited[i] || cost[curIdx][i] == 0)
-				continue;
+		if(cnt == n-1) {
+			x_pos.add(curX);
+			y_pos.add(0);
 			
-			visited[i] = true;
-			answer.add(i);
+			findMin(cnt+1,0);
 			
-			findMin(curIdx+1);
-			
-			answer.remove(answer.size()-1);
-			visited[i] = false;
-			
+			x_pos.remove(x_pos.size()-1);
+			y_pos.remove(y_pos.size()-1);
 		}
 		
+		else {
+			for(int i=0; i<n; i++) {
+				if(visited[i] || cost[curX][i] == 0)
+					continue;
+				
+				visited[curX] = true;
+				
+				x_pos.add(curX);
+				y_pos.add(i);
+				
+				findMin(cnt+1,i);
+				
+				x_pos.remove(x_pos.size()-1);
+				y_pos.remove(y_pos.size()-1);
+				visited[curX] = false;
+				
+			}
+		}
 	}
 
 	public static void main(String[] args) {
@@ -56,7 +73,8 @@ public class Main {
 			}
 		}
 		
-		findMin(0);
+		
+		findMin(0,0);
 		
 		System.out.println(ans);
 		
