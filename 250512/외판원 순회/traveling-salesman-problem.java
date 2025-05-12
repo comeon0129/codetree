@@ -71,3 +71,5 @@ public class Main {
         findMin(1);
 
         System.out.print(ans);
+    }
+}
