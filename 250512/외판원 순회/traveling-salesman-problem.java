@@ -15,13 +15,19 @@ public class Main {
 	public static int ans = Integer.MAX_VALUE;
 	
 	
-	public static void calcMinSum() {
+	public static void calcMinSum(int curX) {
 		int sum = 0;
 		
-		for(int i=0; i<n; i++) {
+		for(int i=0; i<n-1; i++) {
 			sum += cost[x_pos.get(i)][y_pos.get(i)];
 		}
 		
+		if(cost[curX][0] == 0)
+			return;
+		else {
+			sum+=cost[curX][0];
+		}
+
 		ans = Math.min(ans, sum);
 		
 		return;
@@ -29,38 +35,27 @@ public class Main {
 	
 	public static void findMin(int cnt, int curX) {
 		
-		if(cnt == n) {
-			calcMinSum();
+		if(cnt == n-1) {
+			calcMinSum(curX);
 			return;
 		}
 		
-		if(cnt == n-1) {
+	
+		for(int i=0; i<n; i++) {
+			if(visited[i] || cost[curX][i] == 0)
+				continue;
+				
+			visited[curX] = true;
+				
 			x_pos.add(curX);
-			y_pos.add(0);
-			
-			findMin(cnt+1,0);
-			
+			y_pos.add(i);
+				
+			findMin(cnt+1,i);
+				
 			x_pos.remove(x_pos.size()-1);
 			y_pos.remove(y_pos.size()-1);
-		}
-		
-		else {
-			for(int i=0; i<n; i++) {
-				if(visited[i] || cost[curX][i] == 0)
-					continue;
+			visited[curX] = false;
 				
-				visited[curX] = true;
-				
-				x_pos.add(curX);
-				y_pos.add(i);
-				
-				findMin(cnt+1,i);
-				
-				x_pos.remove(x_pos.size()-1);
-				y_pos.remove(y_pos.size()-1);
-				visited[curX] = false;
-				
-			}
 		}
 	}
 
