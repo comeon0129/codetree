@@ -14,7 +14,7 @@ public class Main {
 	
 	public static int maxSafe = 0; //최대 안전영역의 개수
 	
-	public static int maxK = 0;//최대 안전영역을 가질때의 k값 
+	public static int maxK = 1;//최대 안전영역을 가질때의 k값 
 	
 	
 	public static boolean inRange(int x, int y) {
