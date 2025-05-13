@@ -15,7 +15,7 @@ public class Main {
 		dp[1] = 2;
 		dp[2] = 7;
 		for(int i=3; i<=n; i++) {
-			dp[i] = (2*dp[i-1] % 1000000007) + (3*dp[i-2]% 1000000007) + 2;
+			dp[i] = 2*(dp[i-1] % 1000000007) + 3*(dp[i-2]% 1000000007) + 2;
 		}
 		
 		System.out.println(dp[n]);
