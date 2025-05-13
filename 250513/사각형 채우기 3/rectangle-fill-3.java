@@ -15,7 +15,7 @@ public class Main {
 		dp[1] = 2;
 		dp[2] = 7;
 		for(int i=3; i<=n; i++) {
-			dp[i] = (2*dp[i-1] + 3*dp[i-2] + 2) % 1000000007;
+			dp[i] = (2*dp[i-1] + 3*dp[i-2]) % 1000000007;
 			for(int k= 3; k<=i; k++) {
 				dp[i] = (dp[i]+2*dp[i-k]) % 1000000007;
 			}
