@@ -6,7 +6,7 @@ public class Main {
 	public static int[][] matrix;
 	public static int n;
 	public static int[][] dp;
-	public static int minVal = Integer.MAX_VALUE;
+	public static int minVal;
 	
 	public static boolean inRange(int x, int y) {
 		return 0<=x && x<n && 0<= y && y<n;
@@ -61,13 +61,14 @@ public class Main {
 			}
 		}
 		initalize();
-		
+			
 		for(int i=n-2; i>=0; i--) {
 			for(int j=n-2; j>=0; j--) {
 				dp[i][j] = Math.max(dp[i+1][j]+matrix[i][j], dp[i][j+1]+matrix[i][j]);
 			}
 		}
 		
+		minVal = dp[0][0];
 		move(0,0);
 		
 		
@@ -77,5 +78,3 @@ public class Main {
 		sc.close();
 	}
 }
-
-
