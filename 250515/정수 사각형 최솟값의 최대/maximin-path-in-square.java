@@ -1,3 +1,4 @@
+
 import java.util.Scanner;
 
 
@@ -13,8 +14,11 @@ public class Main {
 	}
 	
 	public static void move(int x, int y) {
-		if(x==n-1 && y == n-1)
+		if(x==n-1 && y == n-1) {
+			minVal = Math.min(minVal, dp[x][y]);
 			return;
+		}
+			
 		
 		int num = dp[x][y];
 		int num1 = 0;
@@ -78,3 +82,4 @@ public class Main {
 		sc.close();
 	}
 }
+
