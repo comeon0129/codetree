@@ -8,9 +8,8 @@ public class Main {
 	public static int[] dp;
 	 
 	public static void initalize() {
-		dp[0] = 1;
-		for(int i=1; i<n; i++) {
-			dp[i] = Integer.MIN_VALUE;
+		for(int i=0; i<n; i++) {
+			dp[i] = 1;
 		}
 	}
 	
