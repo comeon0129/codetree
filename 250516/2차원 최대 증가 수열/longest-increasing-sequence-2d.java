@@ -8,12 +8,12 @@ public class Main {
 	public static int[][] dp;
 	 
 	public static void initalize() {
-		
 		for(int i=0; i<n; i++) {
 			for(int j=0; j<m; j++) {
-				dp[i][j] = 1;
+				dp[i][j] = Integer.MIN_VALUE;
 			}
 		}
+		dp[0][0] = 1;
 	}
 	
 	public static void main(String[] args) {
@@ -42,6 +42,13 @@ public class Main {
 			}
 		}
 		
+//		for(int i=0; i<n; i++) {
+//			for(int j=0; j<m; j++) {
+//				System.out.print(dp[i][j]+" ");
+//			}
+//			System.out.println();
+//		}
+		
 		int ans = 0;
 		for(int i=0; i<n; i++) {
 			for(int j=0; j<m; j++) {
@@ -53,3 +60,4 @@ public class Main {
 		sc.close();
 	}
 }
+
