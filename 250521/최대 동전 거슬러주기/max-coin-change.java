@@ -1,4 +1,3 @@
-
 import java.util.Scanner;
 
 
@@ -31,9 +30,9 @@ public class Main {
 		
 		for(int i=0; i<=m; i++){
 			for(int j=0; j<n; j++) {
-				if(i>= coins[j]) {
-					dp[i] = Math.max(dp[i], dp[i-coins[j]]+1);
-				}
+				if(i<coins[j] || dp[i-coins[j]] == Integer.MIN_VALUE)
+					continue;
+				dp[i] = Math.max(dp[i], dp[i-coins[j]]+1);
 			}
 		}
 		
@@ -41,6 +40,7 @@ public class Main {
 			System.out.println(-1);
 		else
 			System.out.println(dp[m]);
+		
 		sc.close();
 	}
 }
