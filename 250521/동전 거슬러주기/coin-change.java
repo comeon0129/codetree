@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
@@ -9,10 +10,10 @@ public class Main {
 	
 	public static void initalize() {
 		dp[0] = 0;
-		
 		for(int i=1; i<=m; i++) {
 			dp[i] = Integer.MAX_VALUE;
 		}
+		
 	}
 	
 	public static void main(String[] args) {
@@ -26,17 +27,19 @@ public class Main {
 			coins[i] = sc.nextInt();
 		}
 		
+		Arrays.sort(coins);
+		
 		initalize();
 		
 		for(int i=0; i<=m; i++) {
 			for(int j=0; j<n; j++) {
-				if(i< coins[j])
+				if(i< coins[j] || dp[i-coins[j]] == Integer.MAX_VALUE)
 					continue;
 				dp[i] = Math.min(dp[i], dp[i-coins[j]]+1);
 			}
 		}
 		
-
+		
 		if(dp[m] == Integer.MAX_VALUE) {
 			System.out.println(-1);
 		}
