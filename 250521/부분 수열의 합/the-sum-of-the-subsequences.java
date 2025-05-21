@@ -1,0 +1,46 @@
+import java.util.Scanner;
+
+
+public class Main {
+	public static int n,m; // n: 동전 종류 개수 m: 금액
+	
+	public static int[] arr;
+	public static int[] dp;
+	
+	public static void initalize() {
+		for(int i=0; i<=m; i++) {
+			dp[i] = Integer.MIN_VALUE;
+		}
+		dp[0] = 0;
+	}
+	
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		n = sc.nextInt();
+		m = sc.nextInt();
+		
+		arr = new int[n];
+		dp = new int[m+1];
+		
+		for(int i=0; i<n; i++) {
+			arr[i] = sc.nextInt();
+		}
+		
+		initalize();
+		
+		for(int i=0; i<n; i++){
+			for(int j=m; j>=0; j--) {
+				if(j<arr[i] || dp[j-arr[i]] == Integer.MIN_VALUE)
+					continue;
+				dp[j] = Math.max(dp[j], dp[j-arr[i]]+1);
+			}
+		}
+		
+		if(dp[m] == Integer.MIN_VALUE)
+			System.out.println("No");
+		else
+			System.out.println("Yes");
+		
+		sc.close();
+	}
+}
