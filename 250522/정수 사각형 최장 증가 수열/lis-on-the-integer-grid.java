@@ -19,12 +19,12 @@ public class Main {
 		return true;
 	}
 	
-	public static int findMaxDist(int x, int y, int curX) {
-		if(memo[x][y] != -1 && memo[x][y] >curX) {
+	public static int findMaxDist(int x, int y) {
+		if(memo[x][y] != -1 ) {
 			return memo[x][y];
 		}
 		
-		memo[x][y] = Math.max(memo[x][y], curX);
+		int maxDist = 1;
 		
 		int[] dx = {-1,1,0,0}; // 상하좌우 순서
 		int[] dy = {0,0,-1,1};
@@ -34,10 +34,11 @@ public class Main {
 			int newY = y+dy[i];
 			
 			if(canGo(newX,newY,grid[x][y])) {
-				findMaxDist(newX, newY, curX+1);
+				maxDist = Math.max(maxDist, 1+findMaxDist(newX,newY));
 			}
 		}
 		
+		memo[x][y] = maxDist;
 		return memo[x][y];
 	
 	}
@@ -51,18 +52,7 @@ public class Main {
 		for(int i=0; i<n; i++) {
 			for(int j=0; j<n; j++) {
 				grid[i][j] = sc.nextInt();
-			}
-		}
-		
-		for(int i=0; i<n; i++) {
-			for(int j=0; j<n; j++) {
 				memo[i][j] = -1;
-			}
-		}
-		
-		for(int i=0; i<n; i++) {
-			for(int j=0; j<n; j++) {
-				findMaxDist(i,j,1);
 			}
 		}
 		
@@ -70,7 +60,7 @@ public class Main {
 		
 		for(int i=0; i<n; i++) {
 			for(int j=0; j<n; j++) {
-				ans = Math.max(ans, memo[i][j]);
+				ans = Math.max(ans, findMaxDist(i, j));
 			}
 		}
 		
