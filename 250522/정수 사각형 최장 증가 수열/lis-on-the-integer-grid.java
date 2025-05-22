@@ -4,8 +4,6 @@ public class Main {
 	public static int n;
 	public static int[][] grid;
 	public static int[][] memo;
-	public static int ans = Integer.MIN_VALUE;
-	
 	
 	public static boolean inRange(int x, int y) {
 		return 0<=x && x<n && 0<=y && y<n;
@@ -21,8 +19,12 @@ public class Main {
 		return true;
 	}
 	
-	public static void findMaxDist(int x, int y, int curX) {
-		ans = Math.max(ans, curX);
+	public static int findMaxDist(int x, int y, int curX) {
+		if(memo[x][y] != -1 && memo[x][y] >curX) {
+			return memo[x][y];
+		}
+		
+		memo[x][y] = Math.max(memo[x][y], curX);
 		
 		int[] dx = {-1,1,0,0}; // 상하좌우 순서
 		int[] dy = {0,0,-1,1};
@@ -36,7 +38,7 @@ public class Main {
 			}
 		}
 		
-		return;
+		return memo[x][y];
 	
 	}
 	
@@ -54,7 +56,21 @@ public class Main {
 		
 		for(int i=0; i<n; i++) {
 			for(int j=0; j<n; j++) {
+				memo[i][j] = -1;
+			}
+		}
+		
+		for(int i=0; i<n; i++) {
+			for(int j=0; j<n; j++) {
 				findMaxDist(i,j,1);
+			}
+		}
+		
+		int ans = Integer.MIN_VALUE;
+		
+		for(int i=0; i<n; i++) {
+			for(int j=0; j<n; j++) {
+				ans = Math.max(ans, memo[i][j]);
 			}
 		}
 		
