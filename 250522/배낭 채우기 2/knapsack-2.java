@@ -8,7 +8,7 @@ public class Main {
 	public static int[] dp;
 	
 	public static void initalize() {
-		for(int i=0; i<=n; i++) {
+		for(int i=0; i<=m; i++) {
 			dp[i] = Integer.MIN_VALUE;
 		}
 		dp[0] = 0;
