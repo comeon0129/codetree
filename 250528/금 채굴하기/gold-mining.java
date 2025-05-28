@@ -45,7 +45,7 @@ public class Main {
 			}
 		}
 		
-		for(int k=n-1; k>=0; k--) {
+		for(int k=n; k>=0; k--) {
 			calc(k);
 		}
 		
