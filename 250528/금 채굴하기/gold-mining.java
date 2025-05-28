@@ -18,7 +18,7 @@ public class Main {
 				
 				for(int x=0; x<n; x++) {
 					for(int y=0; y<n; y++) {
-						if(Math.abs(x-i)+Math.abs(y-i) <= k) {
+						if(Math.abs(x-i)+Math.abs(y-j) <= k) {
 							if(grid[x][y] == 1)
 								cnt++;
 						}
