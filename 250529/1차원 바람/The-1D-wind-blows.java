@@ -81,7 +81,7 @@ public class Main {
 		m = sc.nextInt();
 		q = sc.nextInt();
 		
-		isWind = new boolean[n+2];
+		
 		
 		matrix = new int[n+1][m+1];
 		for(int i=1; i<=n; i++) {
@@ -91,6 +91,7 @@ public class Main {
 		}
 		
 		while(q-->0) {
+			isWind = new boolean[n+2];
 			r = sc.nextInt();
 			d = sc.next().charAt(0);
 			
