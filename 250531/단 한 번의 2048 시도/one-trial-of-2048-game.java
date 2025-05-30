@@ -97,7 +97,7 @@ public class Main {
 		for(int i=0; i<4; i++) {
 			int tempIdx = 3;
 			for(int j=3; j>=0; j--){
-				if(grid[i][j] != 0) {
+				if(grid[j][i] != 0) {
 					temp[tempIdx][i] = grid[j][i];
 					tempIdx--;
 				}
