@@ -85,7 +85,7 @@ public class Main {
 			int tempIdx = 0;
 			for(int j=0; j<4; j++){
 				if(grid[j][i] != 0) {
-					temp[tempIdx][i] = grid[i][j];
+					temp[tempIdx][i] = grid[j][i];
 					tempIdx++;
 				}
 			}
@@ -98,7 +98,7 @@ public class Main {
 			int tempIdx = 3;
 			for(int j=3; j>=0; j--){
 				if(grid[i][j] != 0) {
-					temp[tempIdx][i] = grid[i][j];
+					temp[tempIdx][i] = grid[j][i];
 					tempIdx--;
 				}
 			}
