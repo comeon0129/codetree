@@ -110,20 +110,24 @@ public class Main {
 	//방향에 따라 실제 움직이게 해주는 함수
 	public static void shift() {
 		if(dir == 'L') {
+			l_move();
 			l_concat();
 			l_move();
 		}
 		else if(dir =='R') {
+			r_move();
 			r_concat();
 			r_move();
 		}
 			
 		else if(dir=='U') {
+			u_move();
 			u_concat();
 			u_move();
 		}
 			
 		else if(dir == 'D') {
+			d_move();
 			d_concat();
 			d_move();
 		}	
@@ -154,3 +158,4 @@ public class Main {
 		sc.close();
 	}
 }
+
