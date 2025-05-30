@@ -1,3 +1,4 @@
+
 import java.util.Scanner;
 
 
@@ -25,7 +26,7 @@ public class Main {
 					length++;
 				}
 			}
-			if(length == 1)//모든 알파벳이 같은경우
+			if(length == 1 && n==10)//모든 알파벳이 같은경우
 				minLen = Math.min(minLen, 3);
 			else
 				minLen = Math.min(minLen, 2*length);
