@@ -1,6 +1,5 @@
 import java.util.Scanner;
 
-
 public class Main {
 	public static int n;//격자 크기
 	public static int m;//폭탄이 터지게 만들 조건 -> 행 기준으로 봤을때 연속으로 m개 이상 같은 숫자면 터짐
@@ -52,8 +51,9 @@ public class Main {
 	
 	//행 기준으로 봐서 m개 이상 같은 숫자가 적힌 폭탄 들을 터트리고 그 터졌는지 여부를 반환하는 함수
 	public static boolean bomb() {
+	
 		boolean isBomb = false;
-		
+			
 		for(int y=0; y<n; y++) {
 			int groupCnt = 1;
 			
@@ -105,29 +105,41 @@ public class Main {
 				grid[i][j] = sc.nextInt();
 			}
 		}
-		while(k-->0) {
-			boolean isPossible =false;
-			
-			//더 터질 경우가 없는지 확인해서 있으면 계속해서 폭탄 터트리기
-			do {
-				isPossible = bomb();
-				if(isPossible) // 실제로 터진게 존재하는 경우에만 중력 작용
-					gravity();
-			} while(isPossible);
-			
-			//격자 시계방향으로 90도 회전시키고 중력 적용
-			rotateGrid();
-			gravity();
-			//더 터질 경우가 없는지 확인해서 있으면 계속해서 폭탄 터트리기
-			do {
-				isPossible = bomb();
-				if(isPossible) // 실제로 터진게 존재하는 경우에만 중력 작용
-					gravity();
-			} while(isPossible);
-			
+		
+		//귀찮아서 n이 1인 경우에만 예외처리
+		
+		if(n== 1 && m == 1) {
+			System.out.println(0);
 		}
+		else if(n==1 && m>1) {
+			System.out.println(1);
+		}
+		else {
+		
+			while(k-->0) {
+				boolean isPossible =false;
+			
+				//더 터질 경우가 없는지 확인해서 있으면 계속해서 폭탄 터트리기
+				do {
+					isPossible = bomb();
+					if(isPossible) // 실제로 터진게 존재하는 경우에만 중력 작용
+						gravity();
+				} while(isPossible);
+			
+				//격자 시계방향으로 90도 회전시키고 중력 적용
+				rotateGrid();
+				gravity();
+				//더 터질 경우가 없는지 확인해서 있으면 계속해서 폭탄 터트리기
+				do {
+					isPossible = bomb();
+					if(isPossible) // 실제로 터진게 존재하는 경우에만 중력 작용
+						gravity();
+				} while(isPossible);
+			
+			}
 
-		System.out.println(countBomb());
+			System.out.println(countBomb());
+		}
 		
 		sc.close();
 	}
