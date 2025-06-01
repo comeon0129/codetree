@@ -106,14 +106,13 @@ public class Main {
 			}
 		}
 		
-		//귀찮아서 n이 1인 경우에만 예외처리
-		
-		if(n== 1 && m == 1) {
+		if(m== 1) {
 			System.out.println(0);
 		}
-		else if(n==1 && m>1) {
+		else if(n== 1) {
 			System.out.println(1);
 		}
+		
 		else {
 		
 			while(k-->0) {
@@ -144,3 +143,4 @@ public class Main {
 		sc.close();
 	}
 }
+
