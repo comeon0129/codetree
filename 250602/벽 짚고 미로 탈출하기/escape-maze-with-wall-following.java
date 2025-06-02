@@ -4,7 +4,9 @@ public class Main {
 	public static int n;//미로 크기
 	public static char[][] maze;
 	public static int x,y; //시작 위치
-	public static boolean[][] visited; //방문한 곳에 다시 방문하게 되면 빙글빙글 도는 것
+	public static boolean[][] visited; //방문한 곳이었는지 체크
+	public static int[][] dir;
+	
 	
 	public static boolean inRange(int x, int y) {
 		return 1<=x && x<=n && 1<=y && y<=n;
@@ -21,6 +23,7 @@ public class Main {
 		
 		while(true) {
 			visited[x][y] = true; //x,y 좌표를 방문
+			dir[x][y] = dirNum;
 			
 			int nx = x+dx[dirNum]; int ny = y+dy[dirNum]; //바라보는 방향으로 한 칸 이동
 			
@@ -29,7 +32,7 @@ public class Main {
 				break;
 			}
 			
-			if(visited[nx][ny]) //이미 방문했던 곳에 다시 돌아온 경우 탈출 불가
+			if(visited[nx][ny] && dir[nx][ny] == dirNum) //이미 방문했던 곳에 다시 돌아온 경우 탈출 불가
 				return -1;
 			
 			if(fixTurn == 4) // 제자리에서 한 바퀴 돈 경우 탈출 불가
@@ -52,6 +55,7 @@ public class Main {
 				y= ny;
 				visited[x][y] = true; //x,y 좌표를 방문
 				dirNum = (dirNum+3) % 4;
+				dir[x][y] = dirNum;
 				nx = x+ dx[dirNum];
 				ny = y+dy[dirNum];
 				exitTime+=2;
@@ -74,6 +78,14 @@ public class Main {
 		n = sc.nextInt();
 		maze = new char[n+1][n+1];
 		visited = new boolean [n+1][n+1];
+		dir = new int[n+1][n+1];
+		
+		//못쓰는 기본값으로 초기화
+		for(int i=1; i<=n; i++) {
+			for(int j=1; j<=n; j++) {
+				dir[i][j] = -1;
+			}
+		}
 		
 		x = sc.nextInt();
 		y = sc.nextInt();
@@ -92,5 +104,3 @@ public class Main {
 		sc.close();
 	}
 }
-
-
