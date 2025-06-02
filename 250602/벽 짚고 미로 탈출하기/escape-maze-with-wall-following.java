@@ -54,8 +54,9 @@ public class Main {
 				x= nx;
 				y= ny;
 				visited[x][y] = true; //x,y 좌표를 방문
-				dirNum = (dirNum+3) % 4;
 				dir[x][y] = dirNum;
+				
+				dirNum = (dirNum+3) % 4;
 				nx = x+ dx[dirNum];
 				ny = y+dy[dirNum];
 				exitTime+=2;
@@ -66,8 +67,6 @@ public class Main {
 			
 			fixTurn = 0;
 				
-			
-			
 		}
 		
 		return exitTime;
