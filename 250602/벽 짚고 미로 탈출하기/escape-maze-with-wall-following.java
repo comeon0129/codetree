@@ -4,6 +4,7 @@ public class Main {
 	public static int n;//미로 크기
 	public static char[][] maze;
 	public static int x,y; //시작 위치
+	public static boolean[][] visited; //방문한 곳에 다시 방문하게 되면 빙글빙글 도는 것
 	
 	public static boolean inRange(int x, int y) {
 		return 1<=x && x<=n && 1<=y && y<=n;
@@ -16,20 +17,28 @@ public class Main {
 		int exitTime = 0;
 		int dirNum = 0;
 		
-		int org_x = x;//시작 위치 
-		int org_y = y;//시작 위치
+		int fixTurn = 0;
 		
 		while(true) {
-			int nx = x+dx[dirNum]; int ny = y+dy[dirNum];
+			visited[x][y] = true; //x,y 좌표를 방문
 			
-			if(!inRange(nx,ny)) {
+			int nx = x+dx[dirNum]; int ny = y+dy[dirNum]; //바라보는 방향으로 한 칸 이동
+			
+			if(!inRange(nx,ny)) { //미로 밖이면 탈출
 				exitTime++;
 				break;
 			}
 			
+			if(visited[nx][ny]) //이미 방문했던 곳에 다시 돌아온 경우 탈출 불가
+				return -1;
+			
+			if(fixTurn == 4) // 제자리에서 한 바퀴 돈 경우 탈출 불가
+				return -1;
+			
 			//바라보고 있는 방향으로 한칸 갔을때 벽이 있는 경우 반시계방향으로 90도 회전
 			if(maze[nx][ny] == '#') {
 				dirNum = (dirNum+1) % 4;
+				fixTurn++;
 				continue;
 			}
 			
@@ -41,6 +50,7 @@ public class Main {
 			else {
 				x= nx;
 				y= ny;
+				visited[x][y] = true; //x,y 좌표를 방문
 				dirNum = (dirNum+3) % 4;
 				nx = x+ dx[dirNum];
 				ny = y+dy[dirNum];
@@ -50,9 +60,9 @@ public class Main {
 			x = nx;
 			y = ny;
 			
-			//초기 위치로 돌아왔고 다시 같은 방향으로 움직임을 반복하는 경우
-			if(x== org_x && y== org_y && dirNum == 0)
-				return -1;
+			fixTurn = 0;
+				
+			
 			
 		}
 		
@@ -63,6 +73,7 @@ public class Main {
 		Scanner sc = new Scanner(System.in);
 		n = sc.nextInt();
 		maze = new char[n+1][n+1];
+		visited = new boolean [n+1][n+1];
 		
 		x = sc.nextInt();
 		y = sc.nextInt();
@@ -81,3 +92,5 @@ public class Main {
 		sc.close();
 	}
 }
+
+
