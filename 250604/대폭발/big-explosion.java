@@ -12,7 +12,7 @@ public class Main {
 	public static boolean inRange(int x, int y) {
 		return 1<=x && x<=n && 1<=y && y<=n;
 	}
-	
+		
 	//조건이 맞으면 해당자리 주변으로 폭탄을 생성하는 함수 
 	public static void makeBomb(int x, int y, int t) {
 		int[] dx = {-1,1,0,0}; //상하좌우 순서
@@ -41,6 +41,7 @@ public class Main {
 			for(int j=1; j<=n; j++) {
 				if(grid[i][j] == 1 && !used[i][j]) {
 					makeBomb(i,j,t); 
+					used[i][j] = true;
 				}
 			}
 		}
@@ -74,6 +75,7 @@ public class Main {
 		changeGrid(1);
 		
 		int bombCnt  = calcCnt();
+		
 		
 		System.out.println(bombCnt);
 		
