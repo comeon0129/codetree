@@ -19,8 +19,8 @@ public class Main {
 		int[] dy = {0,0,-1,1};
 		
 		for(int i=0; i<4; i++) {
-			int nx = x+t*dx[i];
-			int ny = y+t*dy[i];
+			int nx = x+(int)Math.pow(2, t-1)*dx[i];
+			int ny = y+(int)Math.pow(2, t-1)*dy[i];
 			
 			if(inRange(nx,ny) && grid[nx][ny]!=1) {
 				grid[nx][ny] = 1;
