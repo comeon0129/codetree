@@ -18,12 +18,7 @@ class Marble implements Comparable<Marble> {
 	
 	@Override
 	public int compareTo(Marble m) {
-		if(this.w > m.w)
-			return 1;
-		else if(this.w==m.w)
-			return this.number-m.number;
-		else
-			return -1;
+		return this.number-m.number;
 	}
 }
 
@@ -127,6 +122,8 @@ public class Main {
 		Collections.sort(marbles);
 		
 		System.out.print(marbles.size()+" ");
+		
+		Collections.sort(marbles, (a,b)-> a.w-b.w );
 		System.out.println(marbles.get(marbles.size()-1).w);
 		
 		sc.close();
