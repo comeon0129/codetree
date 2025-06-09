@@ -18,7 +18,7 @@ public class Main {
 	public static int[][] grid; //사과가 놓일 격자판 영역
 	
 	public static int time = 0; //총 뱀이 움직인 시간
-	
+		
 	public static ArrayList<Body> snake = new ArrayList<>();
 	
 	public static boolean inRange(int x, int y) {
@@ -26,7 +26,7 @@ public class Main {
 	}
 	
 	public static boolean isIntersect(int x, int y) {
-		for(int i=0; i<snake.size(); i++) {
+		for(int i=0; i<snake.size()-1; i++) {
 			if(snake.get(i).x == x && snake.get(i).y == y)
 				return true;
 		}
@@ -35,7 +35,7 @@ public class Main {
 	
 	public static void move(int dirNum, int moveCnt) {
 		
-		int[] dx = {-1,1,0,0}; // 위, 아래,오른쪽, 왼쪽 순서
+		int[] dx = {-1,1,0,0}; // UDRL 순서
 		int[] dy = {0,0,1,-1};
 		
 		while(moveCnt-->0) {
@@ -45,7 +45,7 @@ public class Main {
 			int nx = x+dx[dirNum];
 			int ny = y+dy[dirNum];
 			
-			if(!inRange(nx,ny) || isIntersect(nx,ny)) {
+			if(!inRange(nx,ny)) {
 				System.out.println(time);
 				System.exit(0);
 			}
@@ -54,10 +54,14 @@ public class Main {
 				snake.add(new Body(nx,ny));
 				grid[nx][ny] = 0;
 			}
-			
-			else if(grid[nx][ny] == 0) {
+			else {
 				snake.add(new Body(nx,ny));
 				snake.remove(0);
+			}
+			
+			if(isIntersect(nx,ny)) {
+				System.out.println(time);
+				System.exit(0);
 			}
 		}
 	}
@@ -99,3 +103,4 @@ public class Main {
 		sc.close();
 	}
 }
+
