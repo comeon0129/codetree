@@ -1,9 +1,8 @@
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.Scanner;
 
-class Marble implements Comparable<Marble>{
+class Marble {
 	double x, y;
 	int w;
 	int d;
@@ -15,16 +14,6 @@ class Marble implements Comparable<Marble>{
 		this.w = w;
 		this.d = d;
 		this.number = number;
-	}
-	
-	@Override
-	public int compareTo(Marble o) {
-		if(this.w > o.w)
-			return 1;
-		else if(this.w == o.w)
-			return this.number - o.number;
-		else
-			return -1;
 	}
 }
 
@@ -59,11 +48,18 @@ public class Main {
 		boolean isCollision = false;
 		
 		for(ArrayList<Marble> m : posMap.values()) {
-			if(m.size() == 1) //충돌이 없는 경우
+			if(m.size() == 1) {
 				newMarbles.add(m.get(0));
-			else {
+			} else {
 				isCollision = true;
-				newMarbles.add(m.get(m.size()-1));
+				Marble max = m.get(0);
+				for (int i = 1; i < m.size(); i++) {
+					if (m.get(i).w > max.w || 
+					    (m.get(i).w == max.w && m.get(i).number > max.number)) {
+						max = m.get(i);
+					}
+				}
+				newMarbles.add(max);
 			}
 		}
 		
@@ -107,7 +103,6 @@ public class Main {
 			
 			
 			while(time++ < 4000) {
-				Collections.sort(marbles);
 				simulate();
 			}
 			
@@ -117,3 +112,4 @@ public class Main {
 		sc.close();
 	}
 }
+
