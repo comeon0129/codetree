@@ -104,10 +104,12 @@ public class Main {
 				marbles.add(new Marble(x,y,w,dirNum,i));
 			}
 			
-			Collections.sort(marbles);
 			
-			while(time++ < 4000)
+			
+			while(time++ < 4000) {
+				Collections.sort(marbles);
 				simulate();
+			}
 			
 			System.out.println(ans);
 		}
@@ -115,4 +117,3 @@ public class Main {
 		sc.close();
 	}
 }
-
