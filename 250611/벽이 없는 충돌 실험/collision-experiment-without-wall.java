@@ -5,6 +5,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
+
 import java.util.StringTokenizer;
 
 class Marble {
@@ -109,19 +110,18 @@ public class Main {
 				marbles.add(new Marble(x,y,w,dirNum,i));
 			}
 			
-			int stableCount = 0;
-			int prevSize = n;
-			while (time++ < 4000) {
-			    simulate();
-			    if (marbles.size() <= 1) break;
-
-			    if (marbles.size() == prevSize) {
-			        stableCount++;
-			        if (stableCount >= 5) break;
-			    } else {
-			        stableCount = 0;
-			    }
-			    prevSize = marbles.size();
+			while(time++ < 4000) {
+				simulate();
+				
+				for(int i=0; i<marbles.size(); i++) {
+					if(marbles.get(i).x < -1000 || marbles.get(i).x >1000 ||marbles.get(i).y < -1000 ||marbles.get(i).y > 1000) {
+						marbles.remove(i);
+						i--;
+					}
+				}
+				
+				if(marbles.size() == 1)
+					break;
 			}
 			
 			bw.write(ans+" ");
@@ -132,3 +132,4 @@ public class Main {
 		bw.close();
 	}
 }
+
