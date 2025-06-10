@@ -109,10 +109,19 @@ public class Main {
 				marbles.add(new Marble(x,y,w,dirNum,i));
 			}
 			
-			
-			
-			while(time++ < 4000) {
-				simulate();
+			int stableCount = 0;
+			int prevSize = n;
+			while (time++ < 4000) {
+			    simulate();
+			    if (marbles.size() <= 1) break;
+
+			    if (marbles.size() == prevSize) {
+			        stableCount++;
+			        if (stableCount >= 5) break;
+			    } else {
+			        stableCount = 0;
+			    }
+			    prevSize = marbles.size();
 			}
 			
 			bw.write(ans+" ");
