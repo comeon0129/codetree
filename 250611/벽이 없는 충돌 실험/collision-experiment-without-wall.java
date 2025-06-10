@@ -63,7 +63,6 @@ public class Main {
 				newMarbles.add(m.get(0));
 			else {
 				isCollision = true;
-				Collections.sort(m);
 				newMarbles.add(m.get(m.size()-1));
 			}
 		}
@@ -104,6 +103,8 @@ public class Main {
 				
 				marbles.add(new Marble(x,y,w,dirNum,i));
 			}
+			
+			Collections.sort(marbles);
 			
 			while(time++ < 4000)
 				simulate();
