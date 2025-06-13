@@ -64,13 +64,6 @@ public class Main {
 		visited = new boolean[n][n];
 		dist  = new int[n][n];
 		
-		//dist배열 초기화
-		for(int i=0; i<n; i++) {
-			for(int j=0; j<n; j++) {
-				dist[i][j] = -1;
-			}
-		}
-		
 		//사람 위치 큐에 넣기
 		push(x,y,0);
 		
@@ -79,13 +72,16 @@ public class Main {
 		
 		for(int i=0; i<n; i++) {
 			for(int j=0; j<n; j++) {
-				if(grid[i][j] == 3) {
+				if(grid[i][j] == 3 && dist[i][j] != 0) {
 					minDist =Math.min(minDist, dist[i][j]); 
 				}
 			}
 		}
 		
-		return minDist;
+		if(minDist == Integer.MAX_VALUE)
+			return -1;
+		else
+			return minDist;
 	}
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
@@ -119,5 +115,4 @@ public class Main {
 		sc.close();
 	}
 }
-
 
