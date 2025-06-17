@@ -40,8 +40,7 @@ public class Main {
 				int endJ = people.get(j).e;
 				
 				if(endJ < startI)
-					dp[i] = Math.max(dp[i], dp[j] +dp[i]);
-				
+					dp[i] = Math.max(dp[i], dp[j] +people.get(i).p);
 			}
 		}
 		
