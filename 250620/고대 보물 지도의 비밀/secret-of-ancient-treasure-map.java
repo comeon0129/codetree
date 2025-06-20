@@ -33,20 +33,24 @@ public class Main {
 		initalize();
 		
 		for(int i=1; i<n; i++) {
-			for(int j=0; j<=k; j++) {
-//				case1. map[i]가 음수이면서  부분합의 마지막 원소가 되는경우
-				if(j>=1 && map[i] <0 && dp[i-1][j-1] != Integer.MIN_VALUE ) {
-					dp[i][j] = Math.max(dp[i][j], dp[i-1][j-1]+map[i]);
-				}
-//				case2. map[i]가 양수이면서 부분합의 마지막 원소가 되는 경우
-				else if(map[i] >=0 && dp[i-1][j] !=Integer.MIN_VALUE) {
+			
+//			case1. map[i]가 양수인 경우
+			if(map[i]>=0) {
+				for(int j=0; j<=k; j++) { //음수의 개수는 0개에서 k개 까지 만들어질 수 있음.
 					dp[i][j] = Math.max(dp[i][j], dp[i-1][j]+map[i]);
-					
+					dp[i][j] = Math.max(dp[i][j], map[i]);
 				}
-				dp[i][j] = Math.max(dp[i][j], map[i]);
+				
+			}
+//			case2. map[i]가 음수인 경우
+			else {
+				for(int j=1; j<=k; j++) { //음수의 개수는 1개에서 k개까지 만들어질 수 있음.
+					dp[i][j] = Math.max(dp[i][j], dp[i-1][j-1]+map[i]);
+					dp[i][j] = Math.max(dp[i][j], map[i]);
+				}
 			}
 		}
-	
+		
 		int ans= Integer.MIN_VALUE;
 		
 		for(int i=0; i<n; i++) {
@@ -60,5 +64,3 @@ public class Main {
 	}
 	
 }
-
-	
