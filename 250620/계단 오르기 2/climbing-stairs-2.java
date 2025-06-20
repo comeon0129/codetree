@@ -12,9 +12,8 @@ public class Main {
 		}
 		dp[0][0] = 0;
 		
-		for(int i=1; i<=n; i++) {
-			
-		}
+		
+		
 	}
 	
 	public static void main(String[] args) {
@@ -25,6 +24,8 @@ public class Main {
 		for(int i=1; i<=n; i++)
 			coins[i] = sc.nextInt();
 		
+		
+		initalize();
 		for(int i=1; i<=n; i++) {
 			for(int j=0; j<4; j++) {
 				
@@ -36,9 +37,13 @@ public class Main {
 			}
 		}
 		
-		System.out.println(dp[n][3]);
+		int ans = Integer.MIN_VALUE;
 		
+		for(int i=0; i<4; i++) {
+			ans= Math.max(ans, dp[n][i]);
+		}
 		
+		System.out.println(ans);
 		sc.close();
 	}
 	
