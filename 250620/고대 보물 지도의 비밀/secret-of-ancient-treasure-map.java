@@ -37,13 +37,13 @@ public class Main {
 //				case1. map[i]가 음수이면서  부분합의 마지막 원소가 되는경우
 				if(j>=1 && map[i] <0 && dp[i-1][j-1] != Integer.MIN_VALUE ) {
 					dp[i][j] = Math.max(dp[i][j], dp[i-1][j-1]+map[i]);
-					dp[i][j] = Math.max(dp[i][j], map[i]);
 				}
 //				case2. map[i]가 양수이면서 부분합의 마지막 원소가 되는 경우
 				else if(map[i] >=0 && dp[i-1][j] !=Integer.MIN_VALUE) {
 					dp[i][j] = Math.max(dp[i][j], dp[i-1][j]+map[i]);
-					dp[i][j] = Math.max(dp[i][j], map[i]);
+					
 				}
+				dp[i][j] = Math.max(dp[i][j], map[i]);
 			}
 		}
 	
@@ -60,3 +60,5 @@ public class Main {
 	}
 	
 }
+
+	
