@@ -35,17 +35,19 @@ public class Main {
 		for(int i=1; i<n; i++) {
 			for(int j=0; j<=k; j++) {
 //				case1. map[i]가 음수이면서  부분합의 마지막 원소가 되는경우
-				if(j>=1 && map[i] <0 && dp[i-1][j-1] != Integer.MIN_VALUE)
+				if(j>=1 && map[i] <0 && dp[i-1][j-1] != Integer.MIN_VALUE ) {
 					dp[i][j] = Math.max(dp[i][j], dp[i-1][j-1]+map[i]);
+					dp[i][j] = Math.max(dp[i][j], map[i]);
+				}
 //				case2. map[i]가 양수이면서 부분합의 마지막 원소가 되는 경우
-				if(map[i] >=0 && dp[i-1][j] != Integer.MIN_VALUE)
+				else if(map[i] >=0 && dp[i-1][j] !=Integer.MIN_VALUE) {
 					dp[i][j] = Math.max(dp[i][j], dp[i-1][j]+map[i]);
-////				case3. i번째 원소가 부분합의 처음 시작이 되는경우 
-				dp[i][j] = Math.max(dp[i][j], map[i]);
+					dp[i][j] = Math.max(dp[i][j], map[i]);
+				}
 			}
 		}
-		
-		int ans= -1;
+	
+		int ans= Integer.MIN_VALUE;
 		
 		for(int i=0; i<n; i++) {
 			for(int j=0; j<=k; j++){
