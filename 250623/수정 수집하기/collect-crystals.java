@@ -45,20 +45,20 @@ public class Main {
 		initalize();
 		
 		for(int i=1; i<n; i++) {
-			for(int j=0; j<=1; j++) {
+			for(int j=0; j<=1; j++) { //현재 위치
 				for(int k=0; k<=t; k++) {
-					for(int l=0 ;l<=1; l++) {
-						if(crystal[i] == j) {
-							if(l != j && k>0)
-								dp[i][j][k] = Math.max(dp[i][j][k], dp[i-1][l][k-1]+1);
-							else 
-								dp[i][j][k] = Math.max(dp[i][j][k],dp[i-1][l][k]+1);
+					for(int l=0 ;l<=1; l++) { //이전 위치
+						int gain = 0;
+						if(crystal[i] == j)
+							gain++;
+						
+						if(j == l) {
+							dp[i][j][k] = Math.max(dp[i][j][k], dp[i-1][l][k] + gain);
 						}
 						else {
-							if(l != j && k>0)
-								dp[i][j][k] = Math.max(dp[i][j][k], dp[i-1][l][k-1]);
-							else 
-								dp[i][j][k] = Math.max(dp[i][j][k],dp[i-1][l][k]);
+							if(k>0) {
+								dp[i][j][k] = Math.max(dp[i][j][k], dp[i-1][l][k-1] + gain);
+							}
 						}
 					}
 				}
