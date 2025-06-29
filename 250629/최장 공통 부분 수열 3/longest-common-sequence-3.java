@@ -10,36 +10,36 @@ public class Main {
 	public static int[][] dp;
 	
 	public static void findLCS() {
-		ArrayList<Integer> lcs = new ArrayList<>();
-		int x = n;
-		int y = m;
-		
-		while(dp[x][y] != 0) {
-			
-			if(dp[x-1][y] != dp[x][y] && dp[x][y-1] != dp[x][y]) { //왼쪽과 위쪽 모두와 값이 다른경우
-				lcs.add(a[x]);
-				x--;
-				y--;
-			}
-			else if(dp[x-1][y] == dp[x][y] && dp[x][y-1] == dp[x][y]) {
-				 if (a[x] < b[y]) {
-		                y--;
-		            } else {
-		                x--;
-		            }
-			}
-			else if(dp[x][y-1] == dp[x][y]) {
-				y--;
-			}
-			else if(dp[x-1][y] == dp[x][y]) {
-				x--;
-			}
-		}
-		
-		for(int i=lcs.size()-1; i>=0; i--)
-			System.out.print(lcs.get(i)+" ");
+	    ArrayList<Integer> lcs = new ArrayList<>();
+	    int x = n;
+	    int y = m;
+
+	    while (x > 0 && y > 0) {
+	        if (a[x] == b[y]) {
+	            lcs.add(a[x]);
+	            x--;
+	            y--;
+	        }
+	        else if (dp[x-1][y] == dp[x][y] && dp[x][y-1] == dp[x][y]) {
+	            // 둘 다 가능한 경우, 사전순 작은 값 선택
+	            if (a[x] <= b[y]) {
+	                y--;
+	            } else {
+	                x--;
+	            }
+	        }
+	        else if (dp[x-1][y] == dp[x][y]) {
+	            x--;
+	        }
+	        else {
+	            y--;
+	        }
+	    }
+
+	    for (int i = lcs.size() - 1; i >= 0; i--) {
+	        System.out.print(lcs.get(i) + " ");
+	    }
 	}
-	
 	public static void initalize() {
 		if(a[1] == b[1])
 			dp[1][1] = 1;
@@ -95,3 +95,5 @@ public class Main {
 	}
 	
 }
+
+	
