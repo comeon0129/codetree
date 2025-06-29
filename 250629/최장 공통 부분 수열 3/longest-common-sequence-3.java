@@ -22,10 +22,11 @@ public class Main {
 				y--;
 			}
 			else if(dp[x-1][y] == dp[x][y] && dp[x][y-1] == dp[x][y]) {
-				if(a[x] < a[x-1])
-					y--;
-				else
-					x--;
+				 if (a[x] < b[y]) {
+		                y--;
+		            } else {
+		                x--;
+		            }
 			}
 			else if(dp[x][y-1] == dp[x][y]) {
 				y--;
