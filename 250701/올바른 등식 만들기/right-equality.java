@@ -27,8 +27,9 @@ public class Main {
         			dp[i+1][j+num[i+1]] += dp[i][j];
         	}
         }
+    
+        System.out.println(dp[n][m+20]);
         
-  
         sc.close();
     }
 }
