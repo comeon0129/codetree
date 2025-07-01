@@ -1,4 +1,3 @@
-
 import java.util.Scanner;
 
 public class Main {
@@ -14,8 +13,10 @@ public class Main {
         num = new int[n+1];
         for(int i=1; i<=n; i++)
         	num[i] = sc.nextInt();
-        dp[1][20-num[1]] =1;
-        dp[1][20+num[1]] = 1;
+        
+      
+        dp[1][20-num[1]] ++;
+        dp[1][20+num[1]] ++;
         
         for(int i=1; i<n; i++) {
         	for(int j=0; j<=40; j++) {
@@ -27,8 +28,7 @@ public class Main {
         	}
         }
         
-        System.out.println(dp[n][m+20]);
-        
+  
         sc.close();
     }
 }
