@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
@@ -10,28 +9,47 @@ public class Main {
 	public static int[][] dp;
 	
 	public static void findLCS() {
-	    ArrayList<Integer> lcs = new ArrayList<>();
-	    int x = n;
-	    int y = m;
+	    StringBuilder sb = new StringBuilder();
+	    int x = n, y = m;
 
 	    while (x > 0 && y > 0) {
 	        if (a[x] == b[y]) {
-	            lcs.add(a[x]);
+	            sb.append(a[x]).append(" ");
 	            x--;
 	            y--;
-	        }
-	        else {
-	        	if(dp[x-1][y] > dp[x][y-1])
-	        		x--;
-	        	else
-	        		y--;
+	        } else {
+	            if (dp[x-1][y] > dp[x][y-1]) {
+	                x--;
+	            } else if (dp[x-1][y] < dp[x][y-1]) {
+	                y--;
+	            } else {
+	                // dp[x-1][y] == dp[x][y-1]인 경우: 사전순 비교
+	                int tx = x - 1;
+	                int ty = y - 1;
+	                while (tx > 0 && ty > 0 && a[tx] == b[ty]) {
+	                    tx--;
+	                    ty--;
+	                }
+
+	                if (tx == 0 || ty == 0) {
+	                    // 한쪽이 끝났다면 무조건 둘 중 작은 값으로
+	                    if (a[x - 1] <= b[y - 1]) x--;
+	                    else y--;
+	                } else {
+	                    if (a[tx] <= b[ty]) x--;
+	                    else y--;
+	                }
+	            }
 	        }
 	    }
 
-	    for (int i = lcs.size() - 1; i >= 0; i--) {
-	        System.out.print(lcs.get(i) + " ");
+	    // 역으로 저장했기 때문에 뒤집어서 출력
+	    String[] tokens = sb.toString().trim().split(" ");
+	    for (int i = tokens.length - 1; i >= 0; i--) {
+	        System.out.print(tokens[i] + " ");
 	    }
 	}
+	
 	public static void initalize() {
 		if(a[1] == b[1])
 			dp[1][1] = 1;
@@ -87,6 +105,4 @@ public class Main {
 	}
 	
 }
-
-
 	
