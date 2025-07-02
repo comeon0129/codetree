@@ -1,49 +1,29 @@
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
 public class Main {
 	public static int n,k;
 	public static int[] arr;
-	public static ArrayList<Integer> chosenNum = new ArrayList<>();
+
 	public static HashMap<Integer, Integer> m = new HashMap<>();
-//	curNum번째 위치에 숫자를 고를지 말지 결정하는 함수
-	public static void chooseNum(int curNum, int cnt) {
-		if(cnt == 2) {
-			int sum = 0;
-			for(int c : chosenNum) {
-				sum+=c;
-			}
-			if(m.containsKey(sum))
-				m.put(sum, m.get(sum)+1);
-			else
-				m.put(sum, 1);
-			return;
-		}
-		
-		if(curNum == n)
-			return;
-		
-//		해당 숫자를 뽑지 않는 경우
-		chooseNum(curNum+1, cnt);
-//		해당 숫자를 뽑는 경우
-		chosenNum.add(arr[curNum]);
-		chooseNum(curNum+1,cnt+1);
-		chosenNum.remove(chosenNum.size()-1);
-		
-	}
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         n = sc.nextInt();
         k = sc.nextInt();
         arr = new int[n];
-        for(int i=0; i<n; i++)
+        int cnt = 0;
+        for(int i=0; i<n; i++) {
         	arr[i] = sc.nextInt();
-        chooseNum(0, 0);
-        
-        if(m.containsKey(k))
-        	System.out.println(m.get(k));
-        else
-        	System.out.println(0);
+//        	k-a =b 일때 b가 이미 존재했다면 b가 존재했던 개수만큼 가짓수에 더하기
+        	if(m.containsKey(k-arr[i]))
+        		cnt+=m.get(k-arr[i]);
+        	
+        	if(m.containsKey(arr[i]))
+        		m.put(arr[i], m.get(arr[i])+1);
+        	else
+        		m.put(arr[i], 1);
+        }
+        System.out.println(cnt);
         
         sc.close();
     }
