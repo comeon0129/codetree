@@ -41,7 +41,7 @@ public class Main {
         		save.put(pos[i].x, pos[i].y);
         }
         
-        int sum = 0;
+    	long sum = 0;
         
         for(Integer i: save.keySet()) {
         	sum+= save.get(i);
