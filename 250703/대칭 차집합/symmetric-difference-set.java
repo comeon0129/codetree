@@ -8,16 +8,16 @@ public class Main {
         n = sc.nextInt();
         m = sc.nextInt();
         HashSet<Integer> s = new HashSet<>();
-        while(n-->0) {
+        for(int i=0; i<n; i++) {
         	int num = sc.nextInt();
         	s.add(num);
         }
-        while(m-->0) {
+        for(int i=0; i<m; i++) {
         	int num = sc.nextInt();
         	s.add(num);
         }
         
-        System.out.println(2*s.size()-n-m);
+        System.out.println(2*s.size()-(n+m));
         
         sc.close();
     }
