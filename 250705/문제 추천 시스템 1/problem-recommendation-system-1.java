@@ -1,4 +1,3 @@
-import java.util.Comparator;
 import java.util.Scanner;
 import java.util.TreeSet;
 
@@ -62,21 +61,8 @@ public class Main {
         		}
         		
         		else if(x== -1) {
-        			TreeSet<Problem> treeSet = new TreeSet<>(new Comparator<Problem>() {
-        				@Override
-        				public int compare(Problem o1, Problem o2) {
-        					if(o1.difficulty > o2.difficulty)
-        						return 1;
-        					else if(o1.difficulty == o2.difficulty)
-        						return o2.number - o1.number;
-        					else
-        						return -1;
-        				}
-					});
         			
-        			treeSet.addAll(s);
-        			
-        			System.out.println(treeSet.first().number);
+        			System.out.println(s.first().number);
         		}
         	}
         }
