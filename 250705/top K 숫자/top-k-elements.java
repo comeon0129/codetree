@@ -14,7 +14,7 @@ public class Main {
         }
         
         while(k-->0) {
-        	System.out.print(s.last());
+        	System.out.print(s.last()+" ");
         	s.remove(s.last());
         }
         
