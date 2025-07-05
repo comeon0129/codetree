@@ -7,25 +7,19 @@ public class Main {
         int n =sc.nextInt();
         int m = sc.nextInt();
         TreeSet<Integer> s = new TreeSet<>();
+        int[] num = new int[n];
         
         int diff = Integer.MAX_VALUE;
         
-        while(n-->0) {
-        	int num = sc.nextInt();
-        	s.add(num);
-        	
-        	if(s.lower(num) != null) {
-        		
-        		if(num - s.lower(num) >= m)
-        			diff = Math.min(diff, num-s.lower(num));
-        	}
-        	
-        	if(s.higher(num) != null) {
-        		
-        		if(s.higher(num) - num >= m)
-        			diff = Math.min(diff, s.higher(num) - num);
-        	}
+        for(int i=0; i<n; i++)
+        	num[i] = sc.nextInt();
         
+        for(int i=0; i<n; i++) {
+        	for(int j=i+1; j<n; j++) {
+        		int temp = Math.abs(num[i] - num[j]);
+        		if(temp >=m)
+        			diff= Math.min(diff, temp);
+        	}
         }
        
         if(diff == Integer.MAX_VALUE)
@@ -36,3 +30,4 @@ public class Main {
         sc.close();
     }
 }
+
