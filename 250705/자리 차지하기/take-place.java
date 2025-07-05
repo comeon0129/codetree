@@ -34,14 +34,12 @@ public class Main {
         	}
         	
         	if(flag) {
-        		System.out.println(ans);
         		break;
         	}
         }
         
-       
+       System.out.println(ans);
         
         sc.close();
     }
 }
-
