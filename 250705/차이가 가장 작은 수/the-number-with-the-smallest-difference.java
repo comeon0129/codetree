@@ -28,7 +28,10 @@ public class Main {
         
         }
        
-        System.out.println(diff);
+        if(diff == Integer.MAX_VALUE)
+        	System.out.println(-1);
+        else
+        	System.out.println(diff);
         
         sc.close();
     }
