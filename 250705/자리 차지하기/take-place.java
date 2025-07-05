@@ -15,18 +15,14 @@ public class Main {
         
         TreeSet<Integer> s = new TreeSet<>();
         
-        for(int i=1; i<=m; i++)
-        	s.add(i);
-        
-        
         int ans = 0;
         
         for(int i=1; i<=n; i++) {
         	boolean flag = true;
         	
         	for(int j=a[i]; j>=1; j--) {
-        		if(s.contains(j)) {
-        			s.remove(j);
+        		if(!s.contains(j)) {
+        			s.add(j);
         			ans++;
         			flag = false;
         			break;
