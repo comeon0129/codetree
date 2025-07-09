@@ -17,8 +17,9 @@ public class Main {
        }
        double ans = -1;
        
+       PriorityQueue<Integer> pq = new PriorityQueue<>();
+ 
        for(int k=1; k<=n-2; k++) {
-    	   PriorityQueue<Integer> pq = new PriorityQueue<>();
     	   int sum = 0;
     	   for(int j=k; j<arr.size(); j++) {
     		   pq.add(arr.get(j));
@@ -29,6 +30,7 @@ public class Main {
     	   int size = pq.size();
     	   
     	   ans = Math.max(ans, (double)sum/size);
+    	   pq.clear();
        }
         
        System.out.printf("%.2f",ans);
