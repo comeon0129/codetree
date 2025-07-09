@@ -71,7 +71,7 @@ public class Main {
         	System.out.print(cur.data+" ");
         	
         	if(cur.next == null)
-        		System.out.print("(Null)");
+        		System.out.println("(Null)");
         	else
         		System.out.println(cur.next.data);
         }
