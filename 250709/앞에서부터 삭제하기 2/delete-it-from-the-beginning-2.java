@@ -18,13 +18,9 @@ public class Main {
        double ans = -1;
        
        for(int k=1; k<=n-2; k++) {
-    	   ArrayList<Integer> temp = new ArrayList<>();
-    	   temp.addAll(arr);
-    	   for(int i=0; i<k; i++)
-    		   temp.remove(0);
-    	   
     	   PriorityQueue<Integer> pq = new PriorityQueue<>();
-    	   pq.addAll(temp);
+    	   for(int j=k; j<arr.size(); j++)
+    		   pq.add(arr.get(j));
     	   
     	   pq.poll();
     	   
