@@ -18,19 +18,19 @@ public class Main {
        double ans = -1;
        
        PriorityQueue<Integer> pq = new PriorityQueue<>();
- 
-       for(int k=1; k<=n-2; k++) {
-    	   int sum = 0;
-    	   for(int j=k; j<arr.size(); j++) {
-    		   pq.add(arr.get(j));
-    		   sum+= arr.get(j);
-    	   }
+       
+       pq.add(arr.get(n-1));
+       
+       int sum = arr.get(n-1);
+       
+       for(int k=n-2; k>0; k--) {
     	   
-    	   sum -= pq.poll();
-    	   int size = pq.size();
+    	   pq.add(arr.get(k));
+    	   sum+= arr.get(k);
     	   
-    	   ans = Math.max(ans, (double)sum/size);
-    	   pq.clear();
+    	   sum-=pq.peek();
+    	   ans = Math.max(ans, (double)sum / (pq.size()-1));
+    	   sum+=pq.peek();
        }
         
        System.out.printf("%.2f",ans);
