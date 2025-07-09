@@ -21,7 +21,7 @@ public class Main {
         		int x1 = pq.poll();
         		int x2 = pq.poll();
         		int x3 = pq.poll();
-        		System.out.println(x1*x2*x3);
+        		System.out.println((long)x1*x2*x3);
         		pq.add(x1);
         		pq.add(x2);
         		pq.add(x3);
