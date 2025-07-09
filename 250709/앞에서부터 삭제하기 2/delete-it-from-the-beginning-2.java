@@ -19,17 +19,15 @@ public class Main {
        
        for(int k=1; k<=n-2; k++) {
     	   PriorityQueue<Integer> pq = new PriorityQueue<>();
-    	   for(int j=k; j<arr.size(); j++)
-    		   pq.add(arr.get(j));
-    	   
-    	   pq.poll();
-    	   
     	   int sum = 0;
+    	   for(int j=k; j<arr.size(); j++) {
+    		   pq.add(arr.get(j));
+    		   sum+= arr.get(j);
+    	   }
+    	   
+    	   sum -= pq.poll();
     	   int size = pq.size();
     	   
-    	   while(!pq.isEmpty()) {
-    		   sum+=pq.poll();
-    	   }   
     	   ans = Math.max(ans, (double)sum/size);
        }
         
