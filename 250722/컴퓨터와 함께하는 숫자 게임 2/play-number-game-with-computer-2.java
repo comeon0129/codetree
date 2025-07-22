@@ -24,13 +24,13 @@ public class Main {
 	
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        long m = sc.nextInt();
+        long m = sc.nextLong();
         
         int minCnt = Integer.MAX_VALUE;
         int maxCnt = Integer.MIN_VALUE;
         
-        long a = sc.nextInt();
-        long b = sc.nextInt();
+        long a = sc.nextLong();
+        long b = sc.nextLong();
         
         for(long target = a; target<=b; target++) {
         	int tempCnt = binarySearch(m, target);
