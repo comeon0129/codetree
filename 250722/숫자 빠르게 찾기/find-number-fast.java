@@ -5,7 +5,7 @@ public class Main {
 	
 	public static int binarySearch(int[] arr, int target) {
 		int left = 1;
-		int right = arr.length;
+		int right = arr.length-1;
 		
 		while(left<=right) {
 			int mid = (left+right)/2;
