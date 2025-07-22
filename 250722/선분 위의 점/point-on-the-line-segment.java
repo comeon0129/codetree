@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Scanner;
 
 
@@ -48,6 +49,8 @@ public class Main {
         int [] arr = new int[n];
         for(int i=0; i<n; i++)
         	arr[i] = sc.nextInt();
+        
+        Arrays.sort(arr);
         
         while(m-->0) {
         	int a = sc.nextInt();
