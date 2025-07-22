@@ -2,17 +2,17 @@ import java.util.Scanner;
 
 public class Main {
 	
-	public static int binarySearch(int[] arr, int target) {
-		int left = 1;
-		int right = arr.length-1;
+	public static int binarySearch(long m, long target) {
+		long left = 1;
+		long right = m;
 		int cnt = 1;
 		while(left<=right) {
-			int mid = (left+right)/2;
+			long mid = (left+right)/2;
 			
-			if(arr[mid] == target) 
+			if(mid == target) 
 				break;
 			
-			if(arr[mid] > target)
+			if(mid > target)
 				right = mid-1;
 			else
 				left = mid+1;
@@ -24,21 +24,16 @@ public class Main {
 	
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int m = sc.nextInt();
-        
-        int[] arr =new int[m+1];
-        
-        for(int i=1; i<=m; i++)
-        	arr[i] = i;
+        long m = sc.nextInt();
         
         int minCnt = Integer.MAX_VALUE;
         int maxCnt = Integer.MIN_VALUE;
         
-        int a = sc.nextInt();
-        int b = sc.nextInt();
+        long a = sc.nextInt();
+        long b = sc.nextInt();
         
-        for(int target = a; target<=b; target++) {
-        	int tempCnt = binarySearch(arr, target);
+        for(long target = a; target<=b; target++) {
+        	int tempCnt = binarySearch(m, target);
         	minCnt = Math.min(minCnt, tempCnt);
         	maxCnt = Math.max(maxCnt, tempCnt);
         }
